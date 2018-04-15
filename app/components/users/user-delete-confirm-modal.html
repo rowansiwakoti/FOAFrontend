@@ -1,0 +1,13 @@
+
+<div class="modal-header">
+    <button type="button" class="close" ng-click="userCtrl.closeModal()">&times;</button>
+    <h3 class="modal-title" id="modal-title">Confirm</h3>
+</div>
+<div class="modal-body" id="modal-body">
+    <p>Are you sure you want to delete <strong>{{userCtrl.user.firstName}} {{userCtrl.user.middleName}} {{userCtrl.user.lastName}}</strong>?</p>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-primary pull-left" id="add-restaurant" type="button" ng-click="userCtrl.deleteUserConfirm()">Yes
+    </button>
+    <button class="btn btn-warning pull-left" type="button" ng-click="userCtrl.closeModal()">No</button>
+</div>

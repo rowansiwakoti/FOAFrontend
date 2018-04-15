@@ -1,0 +1,36 @@
+<a class="btn btn-danger" ng-show="compareCtrl.foodList" ng-click="compareCtrl.clearCompareList()"><span class="glyphicon glyphicon-trash"></span> Clear Compare List</a>
+
+<div ng-hide="compareCtrl.foodList" class="row">
+    <h1>No food has been added to compare list.</h1>
+</div><br/><br/>
+
+<table class="table table-condensed table-hover table-striped table-bordered" ng-show="compareCtrl.foodList">
+    <tr>
+        <th class="compareTH"></th>
+        <td ng-repeat="food in compareCtrl.foodList" ng-click="compareCtrl.removeCompareItem(food.id)"><b>Remove</b></td>
+    </tr>
+    <tr>
+        <th class="compareTH">Item</th>
+        <td ng-repeat="food in compareCtrl.foodList">{{$index + 1}}</td>
+    </tr>
+    <tr>
+        <th class="compareTH">Food</th>
+        <td ng-repeat="food in compareCtrl.foodList">{{food.name}}</td>
+    </tr>
+    <tr>
+        <th class="compareTH">Restaurant</th>
+        <td ng-repeat="food in compareCtrl.foodList">{{food.restaurantName}}</td>
+    </tr>
+    <tr>
+        <th class="compareTH">Price</th>
+        <td ng-repeat="food in compareCtrl.foodList">{{food.price}}</td>
+    </tr>
+    <tr>
+        <th class="compareTH">Rating</th>
+        <td ng-repeat="food in compareCtrl.foodList">5</td>
+    </tr>
+    <tr>
+        <th class="compareTH"></th>
+        <td ng-repeat="food in compareCtrl.foodList" ng-click="compareCtrl.addToCart(food)"><a class="btn btn-success">Add to Cart</a></td>
+    </tr>
+</table>

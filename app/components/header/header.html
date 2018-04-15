@@ -1,0 +1,44 @@
+<div class="page-header clearfix">
+    <div class="header-left clearfix">
+        <div class="header-left-l">
+            <a ui-sref="dashboard">
+                <img ng-src="assets/img/logo.png" class="logo" alt="Food Ordering App">
+            </a>
+        </div>
+        <div class="header-left-r">
+            <h1>{{headerCtrl.appName()}}</h1>
+        </div>
+    </div>
+    <div class="header-right clearfix">
+
+        <div uib-tooltip="Food compare list" class="header-right-r" ng-show="headerCtrl.role === 'user'">
+            <a ui-sref="compareList" class="header-right-r">
+                <img ng-src="assets/img/compare-icon.png" alt="food compare list icon"></span>
+            </a>
+        </div>
+        <div uib-tooltip="Your profile" class="header-right-l" ng-click="headerCtrl.openWallet()"
+             ng-show="headerCtrl.role">
+            <a>
+                <img ng-src="assets/img/user.png" alt="User Profile">
+            </a>
+        </div>
+
+        <div class="header-right-r"
+             uib-tooltip="{{headerCtrl.orders.length?(headerCtrl.orders.length>1?'View Notifications':'View Notification'):'You have no notifications'}}"
+             ng-show="headerCtrl.role"
+             ng-click="headerCtrl.orders.length?headerCtrl.openNotification(headerCtrl.orders):''">
+            <a>
+                <img ng-src="assets/img/bell.png" alt="Order Notification">
+            </a>
+            <span class="badge badge-notify"
+                  ng-show="headerCtrl.orders.length > 0">{{headerCtrl.orders.length || 0}}</span>
+        </div>
+        <div class="header-right-r"
+             uib-tooltip="{{headerCtrl.order.length?(headerCtrl.order.length>1?'View Orders':'View Order'):'You have no order'}}"
+             ng-click="headerCtrl.order.length?headerCtrl.openCart():''" ng-show="headerCtrl.role === 'user'">
+            <span class="glyphicon glyphicon-shopping-cart"></span>
+            <span class="badge badge-notify"
+                  ng-show="headerCtrl.order.length > 0">{{headerCtrl.order.length || 0}}</span>
+        </div>
+    </div>
+</div>

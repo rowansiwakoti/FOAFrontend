@@ -1,0 +1,29 @@
+<div class="modal-header order-modal-header">
+    <button class="close" ng-click="notificationCtrl.closeModal()">&times;</button>
+    <div class="modal-title">
+        <h4>Orders</h4>
+    </div>
+</div>
+<div class="modal-body order-modal-body">
+    <h3 style="margin-top: 0px; text-align: center; color: red;" ng-hide="notificationCtrl.orderList.length>=1">No
+        orders made yet</h3>
+    <ul class="list-group order-list page-center" ng-show="notificationCtrl.userRole==='admin'">
+        <li  ng-repeat="order in notificationCtrl.orderList" class="list-group-item" style="font-size: 13px; padding: 5px 0">
+            {{notificationCtrl.name[$index].firstName | uppercase}}
+            {{notificationCtrl.name[$index].lastName |
+            uppercase}} ordered at {{order.orderedDate | date:"HH:mm a"}}
+        </li>
+    </ul>
+
+    <ul class="list-group order-list page-center" ng-show="notificationCtrl.userRole==='user'">
+        <li class="list-group-item" ng-repeat="order in notificationCtrl.orderList" style="font-size: 13px; padding:5px 0;">
+            Your order at {{order.orderedDate | date:"HH:mm a"}} has been confirmed.
+        </li>
+    </ul>
+</div>
+<div class="modal-footer order-modal-footer center">
+    <a class="pointer-cursor" ng-show="notificationCtrl.orderList.length >= 1"
+       ng-click="notificationCtrl.gotoOrder()">
+        View all orders
+    </a>
+</div>

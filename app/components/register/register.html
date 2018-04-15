@@ -1,0 +1,200 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-10 col-md-offset-1">
+
+            <div ng-show="registerCtrl.registerError"
+                 class="alert alert-danger alert-msg alert-dismissible fade in"
+                 role="alert">
+                <strong>{{registerCtrl.registerError}}</strong>
+            </div>
+
+            <div class="panel panel-login">
+                <div class="panel-heading">
+                    <div class="row">
+                        <div class="col-xs-6">
+                            <a ui-sref="login">Log In</a>
+                        </div>
+                        <div class="col-xs-6">
+                            <a class="active">Register</a>
+                        </div>
+                    </div>
+                    <hr>
+                </div>
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-lg-12">
+
+                            <form name="registerForm" role="form" class="register" warn-on-leave>
+                                <div class="row">
+                                    <div class="col-md-1 form-group"><label><h4>Name</h4></label></div>
+                                    <div class="form-group col-md-4">
+                                        <input name="firstName" type="text" tabindex="1" class="form-control"
+                                               placeholder="First Name"
+                                               ng-model="registerCtrl.user.firstName" ng-pattern="/^[A-Za-z\s]+$/"
+                                               ng-minlength="2" ng-maxlength="25"
+                                               required>
+
+                                        <div ng-messages="registerForm.firstName.$error"
+                                             ng-if="registerForm.firstName.$touched">
+                                            <p class="help-block" ng-message="minlength">
+                                                {{registerCtrl.firstNameTooShort}}</p>
+                                            <p class="help-block" ng-message="maxlength">
+                                                {{registerCtrl.firstNameTooLong}}</p>
+                                            <p class="help-block" ng-message="pattern">
+                                                {{registerCtrl.alphabetsOnly}}</p>
+                                            <p class="help-block" ng-message="required">
+                                                {{registerCtrl.firstNameReq}}</p>
+                                        </div>
+
+                                    </div>
+                                    <div class="form-group col-md-3">
+                                        <input type="text" name="middleName" tabindex="1" class="form-control"
+                                               placeholder="Middle Name"
+                                               ng-pattern="/^[A-Za-z\s]+$/" ng-minlength="1" ng-maxlength="25"
+                                               ng-model="registerCtrl.user.middleName">
+                                        <div ng-messages="registerForm.middleName.$error"
+                                             ng-if="registerForm.middleName.$touched">
+                                            <p class="help-block" ng-message="minlength">
+                                                {{registerCtrl.middleNameTooShort}}</p>
+                                            <p class="help-block" ng-message="maxlength">
+                                                {{registerCtrl.middleNameTooLong}}</p>
+                                            <p class="help-block" ng-message="pattern">
+                                                {{registerCtrl.alphabetsOnly}}</p>
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-md-4">
+                                        <input name="lastName" type="text" tabindex="1" class="form-control"
+                                               placeholder="Last Name"
+                                               ng-model="registerCtrl.user.lastName" ng-pattern="/^[A-Za-z\s]+$/"
+                                               ng-minlength="2" ng-maxlength="25"
+                                               required>
+
+                                        <div ng-messages="registerForm.lastName.$error"
+                                             ng-if="registerForm.lastName.$touched">
+                                            <p class="help-block" ng-message="minlength">
+                                                {{registerCtrl.lastNameTooShort}}</p>
+                                            <p class="help-block" ng-message="maxlength">
+                                                {{registerCtrl.lastNameTooLong}}</p>
+                                            <p class="help-block" ng-message="pattern">
+                                                {{registerCtrl.alphabetsOnly}}</p>
+                                            <p class="help-block" ng-message="required">{{registerCtrl.lastNameReq}}</p>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-1 form-group"><label><h4>Email</h4></label></div>
+                                    <div class="form-group col-md-5">
+
+                                        <input name="emailId" type="email" tabindex="1" class="form-control"
+                                               placeholder="Email Address" ng-model="registerCtrl.user.email"
+                                               ng-pattern="/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/"
+                                               ng-minlength="5" ng-maxlength="40" required>
+                                        <div ng-messages="registerForm.emailId.$error"
+                                             ng-if="registerForm.emailId.$touched">
+                                            <p class="help-block" ng-message="pattern">{{registerCtrl.invalidEmail}}</p>
+                                            <p class="help-block" ng-message="required">{{registerCtrl.emailAddReq}}</p>
+                                            <p class="help-block" ng-message="minlength">
+                                                {{registerCtrl.emailAddTooShort}}</p>
+                                            <p class="help-block" ng-message="maxlength">
+                                                {{registerCtrl.emailAddTooLong}}</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-1 form-group"><label><h4>Phone</h4></label></div>
+                                    <div class="form-group col-md-5">
+                                        <input type="text" name="contactNumber" tabindex="1" class="form-control"
+                                               placeholder="Contact No." ng-model="registerCtrl.user.contactNo"
+                                               ng-pattern="/^[0-9]*$/" ng-minlength="7" ng-maxlength="10" required>
+
+                                        <div ng-messages="registerForm.contactNumber.$error"
+                                             ng-if="registerForm.contactNumber.$touched">
+                                            <p class="help-block" ng-message="pattern">{{registerCtrl.numbersOnly}}</p>
+                                            <p class="help-block" ng-message="required">
+                                                {{registerCtrl.contactNoReq}}</p>
+                                            <p class="help-block" ng-message="maxlength">
+                                                {{registerCtrl.contactNoSize}}</p>
+                                            <p class="help-block" ng-message="minlength">
+                                                {{registerCtrl.contactNoSize}}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-1 form-group"><label><h4>Address</h4></label></div>
+                                    <div class="form-group col-md-11">
+                                        <input name="address" type="text" tabindex="1" name="address"
+                                               class="form-control"
+                                               placeholder="Address" ng-model="registerCtrl.user.address"
+                                               ng-pattern="/^[a-zA-Z0-9\s,.'-]*$/" ng-minlength="3" ng-maxlength="50"
+                                               required>
+
+                                        <div ng-messages="registerForm.address.$error"
+                                             ng-if="registerForm.address.$touched">
+                                            <p class="help-block" ng-message="required">{{registerCtrl.addressReq}}</p>
+                                            <p class="help-block" ng-message="maxlength">
+                                                {{registerCtrl.addressTooLong}}</p>
+                                            <p class="help-block" ng-message="minlength">
+                                                {{registerCtrl.addressTooShort}}</p>
+                                            <p class="help-block" ng-message="pattern">
+                                                {{registerCtrl.invalidAddress}}</p>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-1 form-group"><label><h4>Password</h4></label></div>
+                                    <div class="form-group col-md-5">
+                                        <input name="password" type="password" id="password" tabindex="2"
+                                               class="form-control" placeholder="Password"
+                                               ng-model="registerCtrl.user.userPassword" ng-minlength="5"
+                                               ng-maxlength="30" required>
+
+                                        <div ng-messages="registerForm.password.$error"
+                                             ng-if="registerForm.password.$touched">
+                                            <p class="help-block" ng-message="required">{{registerCtrl.passwordReq}}</p>
+                                            <p class="help-block" ng-message="maxlength">
+                                                {{registerCtrl.passwordTooLong}}</p>
+                                            <p class="help-block" ng-message="minlength">
+                                                {{registerCtrl.passwordTooShort}}</p>
+                                        </div>
+
+                                    </div>
+                                    <div class="col-md-1 form-group"><label><h4>Confirm</h4></label></div>
+                                    <div class="form-group col-md-5">
+                                        <input type="password" name="confirmPassword" id="confirm-password" tabindex="2"
+                                               class="form-control" placeholder="Confirm Password"
+                                               ng-model="registerCtrl.user.confirmPassword" ng-minlength="5"
+                                               ng-maxlength="30" required>
+
+                                        <div ng-messages="registerForm.confirmPassword.$error"
+                                             ng-if="registerForm.confirmPassword.$touched">
+                                            <p class="help-block" ng-message="required">Confirm
+                                                {{registerCtrl.passwordReq}}</p>
+                                            <p class="help-block" ng-message="maxlength">Confirm
+                                                {{registerCtrl.passwordTooLong}}</p>
+                                            <p class="help-block" ng-message="minlength">Confirm
+                                                {{registerCtrl.passwordTooShort}}</p>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="form-group">
+                                    <div class="row">
+                                        <div class="col-sm-6 col-sm-offset-3">
+                                            <input type="submit" tabindex="4"
+                                                   ng-click="registerCtrl.registerUser(registerCtrl.user)"
+                                                   class="form-control btn btn-register" value="Register User"
+                                                   ng-disabled="registerForm.$invalid">
+                                        </div>
+                                        <div class="col-sm-1 registration-spinner" ng-show="registerCtrl.dataLoading">
+                                            <span class="glyphicon glyphicon-repeat normal-right-spinner"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

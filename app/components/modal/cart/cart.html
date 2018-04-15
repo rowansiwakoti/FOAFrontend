@@ -1,0 +1,23 @@
+<div class="modal-header cart-modal-header">
+    <button type="button" class="close" ng-click="cartCtrl.closeModal()">&times;</button>
+    <h3>{{cartCtrl.order.name | uppercase}}</h3>
+    <h3>{{cartCtrl.order.price | currency:"Rs. "}}</h3>
+</div>
+<div class="modal-footer cart-modal-footer">
+    <div class="pull-left">
+        <button ng-disabled="cartCtrl.quantity <= 1" class="btn btn-sm" ng-click="cartCtrl.decreaseOrder()">
+            <span class="glyphicon glyphicon-minus"></span>
+        </button>
+        <label>{{cartCtrl.quantity}}</label>
+        <button ng-disabled="cartCtrl.quantity >= 5" class="btn btn-sm" ng-click="cartCtrl.increaseOrder()">
+            <span class="glyphicon glyphicon-plus"></span>
+        </button>
+    </div>
+    <button ng-show="cartCtrl.flag" class="btn btn-danger add-cart-button" ng-click="cartCtrl.removeOrder()">
+        REMOVE ORDER
+    </button>
+    <button class="btn btn-primary add-cart-button" ng-disabled="cartCtrl.quantity===cartCtrl.eachOrderQuantity"
+            ng-click="cartCtrl.addToCart()">
+        <span class="glyphicon glyphicon-shopping-cart"></span> {{cartCtrl.flag?'UPDATE':'ADD TO'}} CART <span>Rs. {{cartCtrl.amount}}</span>
+    </button>
+</div>

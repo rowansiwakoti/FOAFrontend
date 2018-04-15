@@ -1,0 +1,32 @@
+<div>
+    <a class="btn btn-default" ui-sref="dashboard">Go Back</a>
+    <input type="text" ng-model="searchUser" class="form-control" placeholder="Search Users..."
+           style="float: right; width: 80%">
+</div><br/>
+<table class="table table-condensed table-hover table-bordered">
+    <thead>
+    <tr>
+        <th>S/N</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Contact</th>
+        <th>Address</th>
+        <th>Balance</th>
+        <th>Created Date</th>
+        <th>Action</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr ng-repeat="user in userCtrl.userList | filter:searchUser">
+        <td>{{$index+1}}</td>
+        <td>{{user.firstName}} {{user.middleName}} {{user.lastName}}</td>
+        <td>{{user.email}}</td>
+        <td>{{user.contactNo}}</td>
+        <td>{{user.address}}</td>
+        <td>{{user.balance}}</td>
+        <td style="width: 10%;">2/26/2018</td>
+        <td style="width: 12%;"><a class="btn btn-sm btn-primary" ng-click="userCtrl.editUser(user)">Edit</a> <a
+                class="btn btn-sm btn-danger" ng-click="userCtrl.deleteUser(user)">Delete</a></td>
+    </tr>
+    </tbody>
+</table>

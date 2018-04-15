@@ -1,0 +1,79 @@
+<div class="modal-header">
+    <button type="button" class="close" ng-click="restaurantModalCtrl.closeModal()">&times;</button>
+    <h3 ng-hide="restaurantModalCtrl.copyRestaurant" class="modal-title" id="modal-title">Add Restaurant</h3>
+    <h3 ng-show="restaurantModalCtrl.copyRestaurant" class="modal-title">Edit Restaurant</h3>
+</div>
+
+<div class="modal-body" id="modal-body">
+    <form name="restaurantForm" method="POST" enctype="multipart/form-data">
+        <div class="form-group">
+            <label class="restaurant-name center">Restaurant Name</label>
+            <input type="text" name="name" placeholder="Restaurant Name" ng-model="restaurantModalCtrl.restaurant.name"
+                   ng-minlength="3"
+                   ng-maxlength="30" ng-pattern="/^[A-Za-z0-9\s]+$/" class="form-control"
+                   required>
+
+            <div ng-messages="restaurantForm.name.$error"
+                 ng-if="restaurantForm.name.$touched">
+                <p class="help-block" ng-message="pattern">{{restaurantModalCtrl.alphabetsAndNumbersOnly}}</p>
+                <p class="help-block" ng-message="required">{{restaurantModalCtrl.restNameReq}}</p>
+                <p class="help-block" ng-message="maxlength">{{restaurantModalCtrl.restNameTooLong}}</p>
+                <p class="help-block" ng-message="minlength">{{restaurantModalCtrl.restNameTooShort}}</p>
+            </div>
+
+
+        </div>
+        <div class="form-group">
+            <label class="restaurant-name center">Restaurant address</label>
+            <input type="text" name="address" placeholder="Restaurant Address"
+                   ng-model="restaurantModalCtrl.restaurant.address"
+                   class="form-control" ng-minlength="3" ng-maxlength="50"  ng-pattern="/^[a-zA-Z0-9\s,.'-]*$/"
+                   required>
+            <div ng-messages="restaurantForm.address.$error"
+                 ng-if="restaurantForm.address.$touched">
+                <p class="help-block" ng-message="pattern">{{restaurantModalCtrl.invalidAddress}}</p>
+                <p class="help-block" ng-message="required">{{restaurantModalCtrl.restAddressReq}}</p>
+                <p class="help-block" ng-message="maxlength">{{restaurantModalCtrl.restAddressTooLong}}</p>
+                <p class="help-block" ng-message="minlength">{{restaurantModalCtrl.restAddressTooShort}}</p>
+            </div>
+
+        </div>
+        <div class="form-group">
+            <label class="restaurant-contact">Restaurant Contact No.</label>
+            <input type="text" name="contact" ng-model="restaurantModalCtrl.restaurant.contact"
+                   placeholder="Restaurant Contact No."
+                   class="form-control" ng-minlength="7" ng-maxlength="10" ng-pattern="/^\d+$/" required>
+
+            <div ng-messages="restaurantForm.contact.$error"
+                 ng-if="restaurantForm.contact.$touched">
+                <p class="help-block" ng-message="pattern">{{restaurantModalCtrl.numbersOnly}}</p>
+                <p class="help-block" ng-message="required">{{restaurantModalCtrl.contactNoReq}}</p>
+                <p class="help-block" ng-message="maxlength"> {{restaurantModalCtrl.contactNoSize}}</p>
+                <p class="help-block" ng-message="minlength"> {{restaurantModalCtrl.contactNoSize}}</p>
+            </div>
+        </div>
+
+        <div class = "form-group">
+            <label>Restaurant Image</label>
+            <input type="file" class="form-control" file-model="restaurantModalCtrl.restaurant.files">
+        </div>
+
+    </form>
+</div>
+<div class="modal-footer">
+    <button ng-hide="restaurantModalCtrl.copyRestaurant" class="btn btn-primary pull-left" id="add-restaurant"
+            type="button"
+            ng-click="restaurantModalCtrl.addRestaurant(restaurantModalCtrl.restaurant)"
+            ng-disabled="restaurantForm.$invalid">
+        Add Restaurant
+    </button>
+    <button ng-show="restaurantModalCtrl.copyRestaurant" class="btn btn-primary pull-left" type="button"
+            ng-click="restaurantModalCtrl.editRestaurant(restaurantModalCtrl.restaurant)"
+            ng-disabled="restaurantForm.$invalid">Edit
+        Restaurant
+    </button>
+    <button class="btn btn-warning pull-left" type="button" ng-click="restaurantModalCtrl.closeModal()">Cancel</button>
+</div>
+
+
+

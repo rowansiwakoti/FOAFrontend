@@ -1,0 +1,60 @@
+<h2 ng-show="todaysCtrl.orders.length <= 0">No orders today.</h2>
+<table class="table table-condensed table-striped table-bordered " ng-hide="todaysCtrl.orders.length <= 0">
+    <thead>
+    <tr>
+        <th>S.N</th>
+        <th ng-show="todaysCtrl.role==='admin'">User</th>
+        <th>Order</th>
+        <th ng-show="todaysCtrl.role==='user'">Status</th>
+        <th ng-show="todaysCtrl.role==='admin'">Action/Status</th>
+    </tr>
+    </thead>
+    <tbody>
+
+
+    <tr ng-repeat="order in todaysCtrl.orders | orderBy:'-orderedDate'">
+        <td style="vertical-align: middle;">{{$index+1}}</td>
+        <td ng-show="todaysCtrl.role==='admin'" style="vertical-align: middle">{{order.firstName}} {{order.middleName}}
+            {{order.lastName}}
+        </td>
+        <td>
+            <table class="table table-condensed table-striped table-bordered ">
+                <thead>
+                <tr>
+                    <th>Food</th>
+                    <th>Restaurant</th>
+                    <th>Quantity</th>
+                    <th>Unit Price</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="food in order.foodResRequestDtoList">
+                    <td>{{food.foodName}}</td>
+                    <td>{{food.restaurantName}}</td>
+                    <td>{{food.quantity}}</td>
+                    <td>{{food.foodPrice}}</td>
+                </tr>
+                <tr>
+                    <td colspan="3" style="font-weight: bold">Total Amount</td>
+                    <td>{{order.total}}</td>
+                </tr>
+                </tbody>
+            </table>
+        </td>
+        <td ng-show="todaysCtrl.role==='user'"
+            style="vertical-align: middle;">
+            <p ng-show="order.confirm !== true" style="background: red; color: white;">Pending</p>
+            <p ng-show="order.confirm !== false" style="background: blue; color: white;">Received </p>
+            <button ng-show="order.confirm !== false" class="btn btn-sm" ng-click="todaysCtrl.generateBill(order)">Print
+                Bill
+            </button>
+        </td>
+        <td ng-show="todaysCtrl.role==='admin'" style="vertical-align: middle; width: 15%;">
+            <button ng-show="order.confirm !== true" class="btn btn-sm btn-default"
+                    ng-click="todaysCtrl.acceptOrder(order.orderId)">Accept Order
+            </button>
+            <p ng-show="order.confirm !== false" style="background: blue; color: white;">Received</p>
+        </td>
+    </tr>
+    </tbody>
+</table>

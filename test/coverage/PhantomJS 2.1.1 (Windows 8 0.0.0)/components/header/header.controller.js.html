@@ -1,0 +1,632 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for components\header\header.controller.js</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../../prettify.css" />
+    <link rel="stylesheet" href="../../base.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(../../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class='wrapper'>
+  <div class='pad1'>
+    <h1>
+      <a href="../../index.html">all files</a> / <a href="index.html">components/header/</a> header.controller.js
+    </h1>
+    <div class='clearfix'>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">11.25% </span>
+        <span class="quiet">Statements</span>
+        <span class='fraction'>9/80</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">0% </span>
+        <span class="quiet">Branches</span>
+        <span class='fraction'>0/24</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">4.35% </span>
+        <span class="quiet">Functions</span>
+        <span class='fraction'>1/23</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">11.25% </span>
+        <span class="quiet">Lines</span>
+        <span class='fraction'>9/80</span>
+      </div>
+    </div>
+  </div>
+  <div class='status-line low'></div>
+<pre><table class="coverage">
+<tr><td class="line-count quiet">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170
+171
+172
+173
+174
+175
+176
+177
+178
+179
+180
+181
+182
+183
+184
+185
+186
+187
+188
+189
+190</td><td class="line-coverage quiet"><span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">(function () {
+    'use strict';
+    angular.module('FoodOrderingApp')
+        .controller('HeaderController', HeaderController);
+    HeaderController.$inject = [
+        '$sessionStorage',
+        '$uibModal',
+        '$rootScope',
+        '$interval',
+        'APP_CONSTANT',
+        'OrderService',
+        '$scope'
+    ];
+&nbsp;
+<span class="fstat-no" title="function not covered" >    function HeaderController($sessionStorage, $uibModal, $rootScope, $interval, APP_CONSTANT, OrderService, $scope) {</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >        var vm = this;</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >        vm.balance = null;</span>
+<span class="cstat-no" title="statement not covered" >        vm.orderList = [];</span>
+<span class="cstat-no" title="statement not covered" >        vm.orders = [];</span>
+&nbsp;
+&nbsp;
+<span class="cstat-no" title="statement not covered" >        vm.appName = appName;</span>
+<span class="cstat-no" title="statement not covered" >        vm.openWallet = openWallet;</span>
+<span class="cstat-no" title="statement not covered" >        vm.openCart = openCart;</span>
+<span class="cstat-no" title="statement not covered" >        vm.openNotification = openNotification;</span>
+<span class="cstat-no" title="statement not covered" >        vm.initOrderList = initOrderList;</span>
+&nbsp;
+        // init();
+        //
+        // function init() {
+        // }
+&nbsp;
+        //update order list to receive
+<span class="cstat-no" title="statement not covered" >        $scope.$on('updateOrder', <span class="fstat-no" title="function not covered" >function (event, data) {</span></span>
+<span class="cstat-no" title="statement not covered" >            vm.orders = data;</span>
+        })
+&nbsp;
+<span class="cstat-no" title="statement not covered" >        vm.$onInit = <span class="fstat-no" title="function not covered" >function () {</span></span>
+<span class="cstat-no" title="statement not covered" >            vm.order = $sessionStorage.orderList;</span>
+<span class="cstat-no" title="statement not covered" >            vm.role = $sessionStorage.role;</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >            if ($sessionStorage.balance) {</span>
+<span class="cstat-no" title="statement not covered" >                vm.balance = $sessionStorage.balance;</span>
+            }
+<span class="cstat-no" title="statement not covered" >            if ($sessionStorage.orderList) {</span>
+<span class="cstat-no" title="statement not covered" >                vm.orderList = $sessionStorage.orderList;</span>
+            }
+        }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >        $scope.$on('updateOrdersAfterConfirm', <span class="fstat-no" title="function not covered" >function (event,data) {</span></span>
+<span class="cstat-no" title="statement not covered" >            vm.order = data;</span>
+        });
+&nbsp;
+<span class="cstat-no" title="statement not covered" >        $scope.$on('instantUpdateRole', <span class="fstat-no" title="function not covered" >function (event, data) {</span></span>
+<span class="cstat-no" title="statement not covered" >            $sessionStorage.role = data;</span>
+<span class="cstat-no" title="statement not covered" >            vm.role = $sessionStorage.role;</span>
+<span class="cstat-no" title="statement not covered" >            vm.orderList = $sessionStorage.orderList;</span>
+        });
+&nbsp;
+<span class="cstat-no" title="statement not covered" >        $scope.$on('instantUpdateBalance', <span class="fstat-no" title="function not covered" >function (event, data) {</span></span>
+<span class="cstat-no" title="statement not covered" >            vm.balance = data;</span>
+        });
+&nbsp;
+<span class="cstat-no" title="statement not covered" >        $scope.$on('clearRole', <span class="fstat-no" title="function not covered" >function (event, data) {</span></span>
+<span class="cstat-no" title="statement not covered" >            vm.role = data;</span>
+<span class="cstat-no" title="statement not covered" >            $sessionStorage.orderList = [];</span>
+        });
+&nbsp;
+<span class="cstat-no" title="statement not covered" >        $scope.$on('updateOrders', <span class="fstat-no" title="function not covered" >function (event, data) {</span></span>
+<span class="cstat-no" title="statement not covered" >            vm.order = data;</span>
+        });
+&nbsp;
+<span class="fstat-no" title="function not covered" >        function appName() {</span>
+<span class="cstat-no" title="statement not covered" >            return APP_CONSTANT.APP_NAME;</span>
+        }
+&nbsp;
+<span class="fstat-no" title="function not covered" >        function openNotification() {</span>
+<span class="cstat-no" title="statement not covered" >            var modalInstance = $uibModal.open({</span>
+                animation: true,
+                ariaLabelledBy: "modal-title",
+                ariaDescribedBy: "modal-body",
+                backdrop: false,
+                templateUrl: "components/modal/notification/notification.html",
+                controller: "NotificationController",
+                controllerAs: "notificationCtrl",
+                size: "sm",
+                resolve: {
+                    orderList: <span class="fstat-no" title="function not covered" >function () {</span>
+<span class="cstat-no" title="statement not covered" >                        return vm.orders;</span>
+                    }
+                }
+            });
+<span class="cstat-no" title="statement not covered" >            modalInstance.result.then(angular.noop, angular.noop);</span>
+        }
+&nbsp;
+<span class="fstat-no" title="function not covered" >        function openWallet() {</span>
+<span class="cstat-no" title="statement not covered" >            var modalInstance = $uibModal.open({</span>
+                animation: true,
+                ariaLabelledBy: 'modal-title',
+                ariaDescribedBy: 'modal-body',
+                backdrop: false,
+                templateUrl: "components/modal/profile/user-profile.modal.html",
+                controller: "UserProfileController",
+                controllerAs: "userProfileCtrl",
+                size: 'sm',
+                resolve: {
+                    balance: <span class="fstat-no" title="function not covered" >function () {</span>
+<span class="cstat-no" title="statement not covered" >                        return vm.balance;</span>
+                    }
+                }
+            });
+<span class="cstat-no" title="statement not covered" >            modalInstance.result.then(angular.noop, angular.noop);</span>
+        }
+&nbsp;
+<span class="fstat-no" title="function not covered" >        function openCart() {</span>
+<span class="cstat-no" title="statement not covered" >            var modalInstance = $uibModal.open({</span>
+                animation: true,
+                ariaLabelledBy: 'modal-title',
+                ariaDescribedBy: 'modal-body',
+                backdrop: false,
+                templateUrl: 'components/modal/order/order-cart.html',
+                controller: 'OrderModalController',
+                controllerAs: 'orderModalCtrl',
+                size: 'lg'
+            });
+<span class="cstat-no" title="statement not covered" >            modalInstance.result.then(angular.noop, angular.noop);</span>
+        }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >        var date = new Date();</span>
+<span class="cstat-no" title="statement not covered" >        date = date.toISOString().slice(0, 10);</span>
+&nbsp;
+<span class="fstat-no" title="function not covered" >        function initOrderList() {</span>
+<span class="cstat-no" title="statement not covered" >            if ($sessionStorage.role === 'admin' || $sessionStorage.role === 'user') {</span>
+<span class="cstat-no" title="statement not covered" >                OrderService.getOrderList().then(</span>
+<span class="fstat-no" title="function not covered" >                    function (answer) {</span>
+<span class="cstat-no" title="statement not covered" >                        if ($sessionStorage.role === 'admin') {</span>
+<span class="cstat-no" title="statement not covered" >                            vm.orders = answer.data;</span>
+                        }
+                        else <span class="cstat-no" title="statement not covered" >if ($sessionStorage.role === 'user') {</span>
+<span class="cstat-no" title="statement not covered" >                            var orders = answer.data;</span>
+<span class="cstat-no" title="statement not covered" >                            vm.orders = [];</span>
+<span class="cstat-no" title="statement not covered" >                            angular.forEach(orders, <span class="fstat-no" title="function not covered" >function (order) {</span></span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >                                var orderDate = new Date(order.orderedDate);</span>
+<span class="cstat-no" title="statement not covered" >                                if (orderDate.toISOString().slice(0, 10) === date) {</span>
+<span class="cstat-no" title="statement not covered" >                                    vm.orders.push(order);</span>
+                                }
+                            });
+                        }
+<span class="cstat-no" title="statement not covered" >                        $sessionStorage.orders = answer.data;</span>
+<span class="cstat-no" title="statement not covered" >                        $rootScope.$broadcast('getOrderList', answer.data);</span>
+                    },
+<span class="fstat-no" title="function not covered" >                    function (error) {</span>
+                    }
+                );
+            }
+        }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >        vm.initOrderList();</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >        $interval(<span class="fstat-no" title="function not covered" >function () {</span></span>
+<span class="cstat-no" title="statement not covered" >            if ($sessionStorage.role === 'admin' || $sessionStorage.role === 'user') {</span>
+<span class="cstat-no" title="statement not covered" >                OrderService.getOrderList().then(</span>
+<span class="fstat-no" title="function not covered" >                    function (answer) {</span>
+<span class="cstat-no" title="statement not covered" >                        if ($sessionStorage.role === 'admin') {</span>
+<span class="cstat-no" title="statement not covered" >                            vm.orders = answer.data;</span>
+                        }
+                        else <span class="cstat-no" title="statement not covered" >if ($sessionStorage.role === 'user') {</span>
+<span class="cstat-no" title="statement not covered" >                            var orders = answer.data;</span>
+<span class="cstat-no" title="statement not covered" >                            vm.orders = [];</span>
+<span class="cstat-no" title="statement not covered" >                            angular.forEach(orders, <span class="fstat-no" title="function not covered" >function (order) {</span></span>
+<span class="cstat-no" title="statement not covered" >                                var orderDate = new Date(order.orderedDate);</span>
+<span class="cstat-no" title="statement not covered" >                                if (orderDate.toISOString().slice(0, 10) === date) {</span>
+<span class="cstat-no" title="statement not covered" >                                    vm.orders.push(order);</span>
+                                }
+                            });
+                        }
+<span class="cstat-no" title="statement not covered" >                        $sessionStorage.orders = answer.data;</span>
+<span class="cstat-no" title="statement not covered" >                        $rootScope.$broadcast('getOrderList', answer.data);</span>
+                    },
+<span class="fstat-no" title="function not covered" >                    function (error) {</span>
+<span class="cstat-no" title="statement not covered" >                        console.log(error);</span>
+                    }
+                );
+            }
+        }, 30000);
+    }
+})();</pre></td></tr>
+</table></pre>
+<div class='push'></div><!-- for sticky footer -->
+</div><!-- /wrapper -->
+<div class='footer quiet pad2 space-top1 center small'>
+  Code coverage
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Fri Feb 23 2018 17:37:09 GMT+0545 (Nepal Standard Time)
+</div>
+</div>
+<script src="../../prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="../../sorter.js"></script>
+</body>
+</html>

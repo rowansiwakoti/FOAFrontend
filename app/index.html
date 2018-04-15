@@ -1,0 +1,79 @@
+<!--// Created by ROwan Siwakoti (Dikendra )-->
+<!DOCTYPE html>
+<html lang="en" ng-app="FoodOrderingApp">
+<head>
+    <title>Food Ordering App</title>
+    <link rel="icon" type="image/png" href="assets/img/logo.png">
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+
+<body>
+<div class="container">
+    <fv-header></fv-header>
+    <div ui-view>
+
+    </div>
+    <fv-footer></fv-footer>
+</div>
+<script src="bower_components/angular/angular.min.js"></script>
+<script src="bower_components/angular-messages/angular-messages.min.js"></script>
+<script src="bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
+<script src="bower_components/ngstorage/ngStorage.min.js"></script>
+<script src="bower_components/angular-animate/angular-animate.min.js"></script>
+<script src="bower_components/angular-sanitize/angular-sanitize.min.js"></script>
+
+<script src="assets/libs/angular/ui-bootstrap-tpls.min.js"></script>
+
+<script src="bower_components/angular-mocks/angular-mocks.js"></script>
+<script src="bower_components/jquery/dist/jquery.min.js"></script>
+<script src="bower_components/popper.js/dist/popper.min.js"></script>
+<script src="bower_components/angular-ui-router/release/stateEvents.min.js"></script>
+<script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+
+
+<script src="app.module.js"></script>
+<script src="app.config.js"></script>
+<!--<script src="app.run.js"></script>-->
+
+<script src="components/header/header.controller.js"></script>
+<script src="components/header/header.component.js"></script>
+<script src="components/footer/footer.controller.js"></script>
+<script src="components/footer/footer.component.js"></script>
+<script src="components/login/login.controller.js"></script>
+<script src="components/modal/logout/logout.controller.js"></script>
+<script src="components/dashboard/dashboard.controller.js"></script>
+<script src="components/modal/restaurant/restaurant.service.js"></script>
+<script src="components/modal/restaurant/restaurant.modal.controller.js"></script>
+<script src="components/modal/food/food.service.js"></script>
+
+<script src="components/modal/cart/cart.controller.js"></script>
+<script src="components/modal/notification/notification.controller.js"></script>
+<script src="components/modal/profile/user-profile.controller.js"></script>
+<script src="components/registration-success/registration-success.controller.js"></script>
+<script src="components/order-bill/order-bill.controller.js"></script>
+<script src="components/modal/order/order.modal.controller.js"></script>
+<script src="components/modal/food/food.controller.js"></script>
+<script src="services/user.service.js"></script>
+<script src="components/users/user.controller.js"></script>
+<script src="constants/foa.constant.js"></script>
+<script src="components/restaurant/restaurant.controller.js"></script>
+<script src="components/register/register.controller.js"></script>
+
+<script src="services/utility.service.js"></script>
+<script src="services/foodCompare.service.js"></script>
+<script src="components/compare/compare.controller.js"></script>
+
+<script src="services/order.service.js"></script>
+<script src="components/orders/orders.module.js"></script>
+<script src="components/orders/orders.controller.js"></script>
+<script src="components/orders/today/today.controller.js"></script>
+<script src="components/orders/month/month.controller.js"></script>
+
+<script src="directives/warn-on-leave/warn-on-leave.controller.js"></script>
+<script src="directives/warn-on-leave/warn-on-leave.directive.js"></script>
+
+<script src="directives/file-modal.directive.js"></script>
+
+</body>
+</html>

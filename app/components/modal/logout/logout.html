@@ -1,0 +1,11 @@
+<div class="modal-header logout-modal-header">
+    <button type="button" class="close" ng-click="logoutCtrl.cancel()">&times;</button>
+    <h4 class="modal-title logout-modal-title" id="modal-title">Confirm</h4>
+</div>
+<div class="modal-body logout-modal-body" id="modal-body">
+    <p>{{logoutCtrl.logoutMsg}}</p>
+</div>
+<div class="modal-footer logout-modal-footer">
+    <button class="btn btn-primary pull-left" id="add-restaurant" type="button" ng-click="logoutCtrl.ok()">Yes</button>
+    <button class="btn btn-warning pull-left" type="button" ng-click="logoutCtrl.cancel()">No</button>
+</div>

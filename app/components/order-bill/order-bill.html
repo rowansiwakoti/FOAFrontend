@@ -1,0 +1,47 @@
+<a ui-sref="dashboard">Go Back</a>
+<button ng-hide="orderBillCtrl.items === '' ||orderBillCtrl.items.length === 0"
+        class="btn btn-default btn-sm pull-right" ng-click="orderBillCtrl.printBillReceipt('printSectionId')">Print
+</button>
+
+<div ng-show="orderBillCtrl.items === '' || orderBillCtrl.items.length === 0">
+    <h1 class="info-message center">No Orders made yet.
+    </h1>
+</div>
+
+<div id="printSectionId" ng-hide="orderBillCtrl.items === '' ||orderBillCtrl.items.length === 0">
+    <table class="table table-condensed table-hover table-striped table-bordered">
+        <caption>
+            <div class="bill-receipt center"><h3><u>Bill Receipt</u></h3></div>
+            <b><p>Customer: {{orderBillCtrl.fullName | uppercase}}</p>
+                <p class="pull-right">Date: {{orderBillCtrl.todayDate | date}} </p>
+                <p>Address: {{orderBillCtrl.address | uppercase}}</p>
+                <p>Contact: {{orderBillCtrl.contact}}</p></b>
+        </caption>
+        <thead>
+
+        <tr>
+            <th>S/N</th>
+            <th>Restaurant</th>
+            <th>Food</th>
+            <th>Unit Price</th>
+            <th>Quantity</th>
+            <th>Sub Total</th>
+        </tr>
+        </thead>
+        <tbody>
+
+        <tr ng-repeat="item in orderBillCtrl.items">
+            <td>{{$index+1}}</td>
+            <td>{{item.restaurantName}}</td>
+            <td>{{item.foodName}}</td>
+            <td>{{item.foodPrice | currency:"Rs. "}}</td>
+            <td>{{item.quantity}}</td>
+            <td>{{item.foodPrice * item.quantity | currency:"Rs. "}}</td>
+        </tr>
+        <tr>
+            <td colspan="5" class="bill-amount center"><strong>Total Amount</strong></td>
+            <td class="bill-amount center"><strong>{{orderBillCtrl.total | currency:"Rs. "}}</strong></td>
+        </tr>
+        </tbody>
+    </table>
+</div>

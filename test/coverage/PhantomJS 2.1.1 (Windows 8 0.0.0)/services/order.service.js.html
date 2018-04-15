@@ -1,0 +1,428 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for services\order.service.js</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../prettify.css" />
+    <link rel="stylesheet" href="../base.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class='wrapper'>
+  <div class='pad1'>
+    <h1>
+      <a href="../index.html">all files</a> / <a href="index.html">services/</a> order.service.js
+    </h1>
+    <div class='clearfix'>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">36.36% </span>
+        <span class="quiet">Statements</span>
+        <span class='fraction'>20/55</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">7.69% </span>
+        <span class="quiet">Branches</span>
+        <span class='fraction'>2/26</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">36.36% </span>
+        <span class="quiet">Functions</span>
+        <span class='fraction'>4/11</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">36.36% </span>
+        <span class="quiet">Lines</span>
+        <span class='fraction'>20/55</span>
+      </div>
+    </div>
+  </div>
+  <div class='status-line low'></div>
+<pre><table class="coverage">
+<tr><td class="line-count quiet">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122</td><td class="line-coverage quiet"><span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">13×</span>
+<span class="cline-any cline-yes">13×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">13×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">14×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">13×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">(function () {
+    'use strict';
+    angular.module('FoodOrderingApp')
+        .factory('OrderService', OrderService);
+&nbsp;
+    OrderService.$inject = [
+        '$sessionStorage',
+        '$http',
+        '$rootScope',
+        'APP_CONSTANT'
+    ];
+&nbsp;
+    function OrderService($sessionStorage, $http, $rootScope, APP_CONSTANT) {
+&nbsp;
+        var orderList = [];
+        var appUrl = APP_CONSTANT.FOA_APP;
+&nbsp;
+        var orderSvc = {
+            addOrder: addOrder,
+            confirmOrder: confirmOrder,
+            deleteOrder: deleteOrder,
+            getOrder: getOrder,
+            increaseQuantity: increaseQuantity,
+            decreaseQuantity: decreaseQuantity,
+            getOrderList: getOrderList,
+            receiveOrder: receiveOrder
+        };
+&nbsp;
+<span class="fstat-no" title="function not covered" >        function addOrder(order) {</span>
+<span class="cstat-no" title="statement not covered" >            var flag = 1;</span>
+            // set flag to zero // ignores duplicate order
+<span class="cstat-no" title="statement not covered" >            if ($sessionStorage.orderList) {</span>
+<span class="cstat-no" title="statement not covered" >                angular.forEach($sessionStorage.orderList, <span class="fstat-no" title="function not covered" >function (item) {</span></span>
+<span class="cstat-no" title="statement not covered" >                    if (item.id === order.id) {</span>
+<span class="cstat-no" title="statement not covered" >                        flag = 0;</span>
+<span class="cstat-no" title="statement not covered" >                        item.quantity = order.quantity;</span>
+                    }
+                });
+            }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >            if (flag === 1) {</span>
+<span class="cstat-no" title="statement not covered" >                if ($sessionStorage.orderList) {</span>
+<span class="cstat-no" title="statement not covered" >                    orderList = $sessionStorage.orderList;</span>
+<span class="cstat-no" title="statement not covered" >                    orderList.push(order);</span>
+<span class="cstat-no" title="statement not covered" >                    $sessionStorage.orderList = orderList;</span>
+                }
+                else {
+<span class="cstat-no" title="statement not covered" >                    orderList.push(order);</span>
+<span class="cstat-no" title="statement not covered" >                    $sessionStorage.orderList = orderList;</span>
+<span class="cstat-no" title="statement not covered" >                    orderList = $sessionStorage.orderList;</span>
+                }
+            }
+<span class="cstat-no" title="statement not covered" >            $rootScope.$broadcast('updateOrders', orderList);</span>
+        }
+&nbsp;
+<span class="fstat-no" title="function not covered" >        function confirmOrder(order) {</span>
+<span class="cstat-no" title="statement not covered" >            var req = {</span>
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                data: order,
+                url: appUrl + '/order'
+            };
+<span class="cstat-no" title="statement not covered" >            return ($http(req));</span>
+        }
+&nbsp;
+        function deleteOrder(order) {
+            var flag = 1;
+            var position;
+            <span class="missing-if-branch" title="if path not taken" >I</span>if ($sessionStorage.orderList) {
+<span class="cstat-no" title="statement not covered" >                for (var i = 0; i &lt; $sessionStorage.orderList.length; i++) {</span>
+<span class="cstat-no" title="statement not covered" >                    if (order.id === $sessionStorage.orderList[i].id) {</span>
+<span class="cstat-no" title="statement not covered" >                        position = i;</span>
+                    }
+                }
+<span class="cstat-no" title="statement not covered" >                $sessionStorage.orderList.splice(position, 1);</span>
+            }
+        }
+&nbsp;
+        function getOrder() {
+            <span class="missing-if-branch" title="if path not taken" >I</span>if ($sessionStorage.orderList) {
+<span class="cstat-no" title="statement not covered" >                return $sessionStorage.orderList;</span>
+            }
+        }
+&nbsp;
+<span class="fstat-no" title="function not covered" >        function increaseQuantity(food) {</span>
+<span class="cstat-no" title="statement not covered" >            if (food.quantity &lt; APP_CONSTANT.MAX_ORDERS) {</span>
+<span class="cstat-no" title="statement not covered" >                for (var i = 0; i &lt; $sessionStorage.orderList.length; i++) {</span>
+<span class="cstat-no" title="statement not covered" >                    if (food.id === $sessionStorage.orderList[i].id) {</span>
+<span class="cstat-no" title="statement not covered" >                        $sessionStorage.orderList[i].quantity += 1;</span>
+                    }
+                }
+            }
+        }
+&nbsp;
+<span class="fstat-no" title="function not covered" >        function decreaseQuantity(food) {</span>
+<span class="cstat-no" title="statement not covered" >            if (food.quantity &gt; APP_CONSTANT.MIN_ORDERS) {</span>
+<span class="cstat-no" title="statement not covered" >                for (var i = 0; i &lt; $sessionStorage.orderList.length; i++) {</span>
+<span class="cstat-no" title="statement not covered" >                    if (food.id === $sessionStorage.orderList[i].id) {</span>
+<span class="cstat-no" title="statement not covered" >                        $sessionStorage.orderList[i].quantity -= 1;</span>
+                    }
+                }
+            }
+        }
+&nbsp;
+<span class="fstat-no" title="function not covered" >        function getOrderList() {</span>
+<span class="cstat-no" title="statement not covered" >            if ($sessionStorage.role === 'admin') {</span>
+<span class="cstat-no" title="statement not covered" >                return ($http.get(appUrl + '/order'));</span>
+            }
+            else <span class="cstat-no" title="statement not covered" >if ($sessionStorage.role === 'user') {</span>
+<span class="cstat-no" title="statement not covered" >                return ($http.get(appUrl + '/order/orderList/' + $sessionStorage.userId));</span>
+            }
+        }
+&nbsp;
+<span class="fstat-no" title="function not covered" >        function receiveOrder(id) {</span>
+<span class="cstat-no" title="statement not covered" >            return ($http.put(appUrl + '/order/' + id));</span>
+        }
+&nbsp;
+        return orderSvc;
+    }
+})();</pre></td></tr>
+</table></pre>
+<div class='push'></div><!-- for sticky footer -->
+</div><!-- /wrapper -->
+<div class='footer quiet pad2 space-top1 center small'>
+  Code coverage
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Fri Feb 23 2018 17:37:09 GMT+0545 (Nepal Standard Time)
+</div>
+</div>
+<script src="../prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="../sorter.js"></script>
+</body>
+</html>

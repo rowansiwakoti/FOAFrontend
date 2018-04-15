@@ -1,0 +1,7 @@
+<ul class="nav nav-tabs" >
+    <li class="{{ordersCtrl.today?'active':'inactive'}} pointer-cursor" data-toggle="tab"  ng-click="ordersCtrl.todaysOrder()"><a>Today's Order</a></li>
+    <li class="{{ordersCtrl.month?'active':'inactive'}} pointer-cursor" data-toggle="tab" ng-click="ordersCtrl.monthsOrder()"><a>This Month's Order</a></li>
+</ul>
+
+<ui-view></ui-view>
+

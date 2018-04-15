@@ -1,0 +1,91 @@
+<div id="alertMessage" ng-show="loginCtrl.errorMsg" class="alert alert-danger alert-dismissible fade in"
+     role="alert"><a class="close" data-dismiss="alert" aria-label="close">&times;</a>
+    <p>{{loginCtrl.errorMsg}}</p>
+</div>
+<div class="row">
+    <div class="col-md-10 col-md-offset-1">
+        <div class="panel panel-login">
+            <div class="panel-heading">
+                <div class="row">
+                    <div class="col-xs-6">
+                        <a class="active">Log In</a>
+                    </div>
+                    <div class="col-xs-6">
+                        <a ui-sref="register">Register</a>
+                    </div>
+                </div>
+                <hr>
+            </div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-lg-12">
+
+                        <!--Login Form-->
+                        <form id="login-form" name="loginForm" role="form"
+                              ng-submit="loginCtrl.validateUser(loginCtrl.user)" warn-on-leave>
+                            <div class="col-sm-6 col-sm-offset-3">
+                                <div class="form-group">
+
+                                    <input name="emailId" type="email" tabindex="1" class="form-control"
+                                           placeholder="Email Address" ng-model="loginCtrl.user.email"
+                                           ng-pattern="/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/"
+                                           ng-minlength="5" ng-maxlength="40" required>
+
+                                    <div ng-messages="loginForm.emailId.$error"
+                                         ng-if="loginForm.emailId.$touched">
+                                        <p class="help-block" ng-message="pattern">Invalid email address.</p>
+                                        <p class="help-block" ng-message="required">
+                                            Email address is required.</p>
+                                        <p class="help-block" ng-message="minlength">
+                                            Email address is too short</p>
+                                        <p class="help-block" ng-message="maxlength">
+                                            Email address is too long</p>
+                                    </div>
+
+                                </div>
+                                <div class="form-group" style="position: relative;">
+                                    <input type="{{loginCtrl.inputType}}" name="password" tabindex="2"
+                                           class="form-control" placeholder="Password"
+                                           ng-model="loginCtrl.user.userPassword" ng-minlength="5" ng-maxlength="30"
+                                           required>
+
+
+                                    <div ng-messages="loginForm.password.$error"
+                                         ng-if="loginForm.password.$touched">
+                                        <p class="help-block" ng-message="required">Password is required.</p>
+                                        <p class="help-block" ng-message="maxlength">
+                                            Password is too long.</p>
+                                        <p class="help-block" ng-message="minlength">
+                                            Password is too short.</p>
+                                    </div>
+
+                                    <span ng-show="loginCtrl.user.userPassword"
+                                          ng-mouseleave="loginCtrl.inputType = 'password'"
+                                          ng-mouseover="loginCtrl.inputType = 'text'"
+                                          class="glyphicon glyphicon-eye-open"></span>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="row">
+                                    <div class="col-sm-4 col-sm-offset-4">
+                                        <input type="submit" name="login-submit" id="login-submit" tabindex="4"
+                                               ng-disabled="loginForm.$invalid" class="form-control btn btn-login"
+                                               value="Log In">
+                                    </div>
+
+                                    <div ng-show="loginCtrl.dataLoading" class="col-sm-1 spinner">
+                                        <span class="glyphicon glyphicon-repeat normal-right-spinner"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+

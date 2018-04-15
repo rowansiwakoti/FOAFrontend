@@ -1,0 +1,63 @@
+<div class="modal-header">
+    <button type="button" class="close" ng-click="orderModalCtrl.modalCancel()">&times;</button>
+    <h3 ng-show="orderModalCtrl.order.length" class="modal-title" id="modal-title">
+        Confirm Order</h3>
+</div>
+<div class="modal-body order-cart-modal-body" id="modal-body">
+    <table class="table table-condensed table-hover table-striped table-bordered ">
+        <caption ng-show="orderModalCtrl.order.length">
+            <h4><u>Order List</u></h4>
+        </caption>
+        <thead ng-show="orderModalCtrl.order.length">
+        <tr>
+            <th>S/N</th>
+            <th>Restaurant</th>
+            <th>Food</th>
+            <th>Unit Price</th>
+            <th>Quantity</th>
+            <th>Sub Total</th>
+            <th>Remove</th>
+        </tr>
+        </thead>
+        <tbody>
+        <h2 ng-hide="orderModalCtrl.order.length" colspan="7" class="info-message center">You have no orders.
+        </h2>
+        <tr ng-repeat="food in orderModalCtrl.order | orderBy: '-restaurantName'" class="center">
+            <td>{{$index + 1}}</td>
+            <td>{{food.restaurantName}}</td>
+            <td>{{food.name}}</td>
+            <td>{{food.price | currency:"Rs. "}}</td>
+            <td>
+                <button class="btn btn-sm num-control" ng-click="orderModalCtrl.decreaseQuantity(food)"
+                        ng-disabled="food.quantity <= 1"><span
+                        class="glyphicon glyphicon-minus"></span>
+                </button>
+                &nbsp;&nbsp;
+                {{food.quantity}}
+                &nbsp;&nbsp;
+                <button class="btn btn-sm num-control" ng-click="orderModalCtrl.increaseQuantity(food)"
+                        ng-disabled="food.quantity >= 5"><span
+                        class="glyphicon glyphicon-plus"></span></button>
+            </td>
+            <td class="page">{{food.price * food.quantity | currency:"Rs. "}}</td>
+            <td class="page">
+                <button class="btn btn-sm" ng-click="orderModalCtrl.deleteOrder(food)"><span
+                        class="glyphicon glyphicon-remove"></span></button>
+            </td>
+        </tr>
+        <tr ng-show="orderModalCtrl.order.length">
+            <td colspan="5" class="bill-amount center"><strong>Total Amount</strong></td>
+            <td colspan="2" class="bill-amount center"><strong>{{orderModalCtrl.getTotal() | currency:"Rs. "}}</strong>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<div class="modal-footer">
+    <button ng-click="orderModalCtrl.orderFood()" class="btn btn-sm btn-success pull-left"
+            ng-show="orderModalCtrl.order.length">Place Order
+    </button>
+    <button ng-click="orderModalCtrl.continueOrder()" class="btn btn-sm btn-primary pull-right" type="button">Continue
+        Shopping
+    </button>
+</div>

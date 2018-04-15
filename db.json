@@ -1,0 +1,22 @@
+{
+  "orders": [
+    {
+      "userId": 17,
+      "foodList": [
+        {
+          "foodName": "Mutton Sekuwa",
+          "foodPrice": 200,
+          "restaurantName": "Baje Ko Sekuwa",
+          "quantity": 1
+        }
+      ],
+      "orderedDate": 1520330765,
+      "username": "Rowan Siwakoti",
+      "confirm": false,
+      "id": 1
+    }
+  ],
+  "users":[
+    {"id":1,"name":"Rabin"}
+  ]
+}

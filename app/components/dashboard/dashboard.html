@@ -1,0 +1,33 @@
+<a class="btn btn-default btn-sm" ng-click="dashboardCtrl.addRestaurant()" ng-hide="dashboardCtrl.role==='user'">Add
+    Restaurant</a>
+<a class="btn btn-default btn-sm" ng-click="dashboardCtrl.getAllUsers()" ng-hide="dashboardCtrl.role==='user'">View All
+    Users</a>
+<div id="alertMessage" ng-show="dashboardCtrl.message" class="alert alert-success alert-msg alert-dismissible fade in"
+     role="alert"><a class="close" data-dismiss="alert" aria-label="close">&times;</a>
+    <strong>{{dashboardCtrl.message}}</strong>
+</div>
+<div class="row restaurant-dashboard">
+    <div class="col-md-4 restaurant" ng-hide="restaurant.active===false && dashboardCtrl.role==='user'"
+         ng-repeat="restaurant in dashboardCtrl.restaurants">
+        <a ng-click="dashboardCtrl.gotoRestaurant(restaurant)">
+            <div class="restaurant-card"
+                 style="background-image:url(assets/images/{{restaurant.restaurantCode}});background-size:360px 200px; z-index: 0">
+                <h3 class="rest">{{restaurant.name}}</h3>
+            </div>
+        </a>
+        <div ng-show="dashboardCtrl.role==='user'" class="favorite-button">
+            <span class="glyphicon glyphicon-heart-empty" style="margin-top: 5px;"></span>
+        </div><br/>
+        <button class="btn btn-success btn-sm" ng-click="dashboardCtrl.editRestaurant(restaurant)"
+                ng-hide="dashboardCtrl.role==='user'">Edit Restaurant
+        </button>
+        <button class="btn btn-danger btn-sm" ng-click="dashboardCtrl.deleteRestaurant(restaurant)"
+                ng-hide="dashboardCtrl.role==='user'">Delete Restaurant
+        </button>
+    </div>
+</div>
+<div class="page-center">
+    <ul uib-pagination total-items="dashboardCtrl.totalRestaurants" ng-model="dashboardCtrl.currentPage" max-size=""
+        class="pagination-sm" boundary-link-numbers="true" items-per-page="{{6}}"
+        ng-click="dashboardCtrl.getRestaurants()"></ul>
+</div>
