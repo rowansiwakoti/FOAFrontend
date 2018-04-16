@@ -34,5 +34,6 @@
 
     angular.module('FoodOrderingApp.Services',[
         'FoodOrderingApp.Services.FoodCompare',
+        'FoodOrderingApp.Services.API'
     ]);
 })();
