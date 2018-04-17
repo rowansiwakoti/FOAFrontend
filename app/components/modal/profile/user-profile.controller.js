@@ -23,6 +23,7 @@
         vm.closeModal = closeModal;
         vm.userLogout = userLogout;
         vm.orderList = orderList;
+        vm.favouriteList = favouriteList;
 
         function orderList() {
             $uibModalInstance.close();
@@ -31,6 +32,11 @@
 
         function closeModal() {
             $uibModalInstance.close();
+        }
+
+        function favouriteList(){
+            $uibModalInstance.close();
+            $state.go('FavouriteList');
         }
 
         function userLogout() {

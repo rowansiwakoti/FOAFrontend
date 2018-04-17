@@ -1,4 +1,4 @@
-// created by rowan siwakoti
+
 (function () {
     'use strict';
 
@@ -24,6 +24,7 @@
             'FoodOrderingApp.Components.Login',
             // 'FoodOrderingApp.Components.Dashboard',
             'FoodOrderingApp.Components.Compare',
+            'FoodOrderingApp.Components.Favourite',
     ]);
 })();
 
@@ -33,5 +34,6 @@
 
     angular.module('FoodOrderingApp.Services',[
         'FoodOrderingApp.Services.FoodCompare',
+        'FoodOrderingApp.Services.API'
     ]);
 })();
