@@ -19,9 +19,10 @@
         vm.clearCompareList = CompareFoodService.clearCompare;
 
         vm.$onInit = function(){
-            $interval(function(){
-                vm.foodList = $localStorage.foodsForCompare;
-            });
+            // $interval(function(){
+            //     vm.foodList = $localStorage.foodsForCompare;
+            // });
+            vm.foodList = CompareFoodService.getCompareList;
         };
 
         vm.addToCart = function(food){

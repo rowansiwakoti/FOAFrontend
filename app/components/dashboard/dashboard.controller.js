@@ -11,7 +11,7 @@
         '$log',
         'APP_CONSTANT',
         'RestaurantService',
-        '$rootScope'
+        '$rootScope',
     ];
 
     function DashboardController($state, $uibModal, $sessionStorage, $log, APP_CONSTANT, RestaurantService, $rootScope) {
@@ -60,8 +60,9 @@
 
             RestaurantService.getRestaurantList(vm.currentPage - 1).then(
                 function (answer) {
+                    console.log(answer);
                     vm.currentPage = $sessionStorage.currentPage;
-                    vm.restaurants = answer.data.responseData;
+                    vm.restaurants = answer.data.responseData;  //answer.responseData
                     vm.totalRestaurants = answer.data.pageModel.count;
                 },
                 function (error) {
@@ -178,6 +179,7 @@
             });
 
             modalInstance.result.then(function (restaurant) {
+                console.log('aayo',restaurant);
                 vm.message = RestaurantService.getAlertMessage();
                 edit(restaurant);
             }, function () {

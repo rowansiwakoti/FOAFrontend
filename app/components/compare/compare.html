@@ -7,30 +7,30 @@
 <table class="table table-condensed table-hover table-striped table-bordered" ng-show="compareCtrl.foodList">
     <tr>
         <th class="compareTH"></th>
-        <td ng-repeat="food in compareCtrl.foodList" ng-click="compareCtrl.removeCompareItem(food.id)"><b>Remove</b></td>
+        <td ng-repeat="food in compareCtrl.foodList()" ng-click="compareCtrl.removeCompareItem(food.id)"><b>Remove</b></td>
     </tr>
     <tr>
         <th class="compareTH">Item</th>
-        <td ng-repeat="food in compareCtrl.foodList">{{$index + 1}}</td>
+        <td ng-repeat="food in compareCtrl.foodList()">{{$index + 1}}</td>
     </tr>
     <tr>
         <th class="compareTH">Food</th>
-        <td ng-repeat="food in compareCtrl.foodList">{{food.name}}</td>
+        <td ng-repeat="food in compareCtrl.foodList()">{{food.name}}</td>
     </tr>
     <tr>
         <th class="compareTH">Restaurant</th>
-        <td ng-repeat="food in compareCtrl.foodList">{{food.restaurantName}}</td>
+        <td ng-repeat="food in compareCtrl.foodList()">{{food.restaurantName}}</td>
     </tr>
     <tr>
         <th class="compareTH">Price</th>
-        <td ng-repeat="food in compareCtrl.foodList">{{food.price}}</td>
+        <td ng-repeat="food in compareCtrl.foodList()">{{food.price}}</td>
     </tr>
     <tr>
         <th class="compareTH">Rating</th>
-        <td ng-repeat="food in compareCtrl.foodList">5</td>
+        <td ng-repeat="food in compareCtrl.foodList()">5</td>
     </tr>
     <tr>
         <th class="compareTH"></th>
-        <td ng-repeat="food in compareCtrl.foodList" ng-click="compareCtrl.addToCart(food)"><a class="btn btn-success">Add to Cart</a></td>
+        <td ng-repeat="food in compareCtrl.foodList()" ng-click="compareCtrl.addToCart(food)"><a class="btn btn-success">Add to Cart</a></td>
     </tr>
 </table>

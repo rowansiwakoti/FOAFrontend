@@ -37,6 +37,7 @@
 
         vm.$onInit = function () {
             if (Restaurant) {
+                console.log(Restaurant);
                 vm.restaurant = angular.copy(Restaurant);
                 vm.copyRestaurant = angular.copy(Restaurant);
                 vm.restaurantToBeDeleted = Restaurant.name;
@@ -57,13 +58,20 @@
                         $uibModalInstance.close(answer.data);
                     },
                     function (error) {
-                        $log.error('Error occurred while adding the restaurant ', error.status);
+                        $log.error('Error occurred while adding the restaurant ', error);
                     }
                 );
         }
 
         function editRestaurant(restaurant) {
-            RestaurantService.editRestaurant(restaurant)
+            var formDataRestaurant = new FormData();
+            // formDataRestaurant.append('id', restaurant.id);
+            formDataRestaurant.append('files', restaurant.files);
+            formDataRestaurant.append('name', restaurant.name);
+            formDataRestaurant.append('address',restaurant.address);
+            formDataRestaurant.append('contact',restaurant.contact);
+
+            RestaurantService.editRestaurant(formDataRestaurant,  restaurant.id)
                 .then(
                     function (answer) {
                         RestaurantService.setAlertMessage(restaurant.name + ' ' + APP_CONSTANT.EDIT_MSG);
@@ -74,6 +82,20 @@
                     }
                 );
         }
+
+        // function editRestaurant(restaurant) {
+        //     RestaurantService.editRestaurant(restaurant)
+        //         .then(
+        //             function (answer) {
+        //                 RestaurantService.setAlertMessage(restaurant.name + ' ' + APP_CONSTANT.EDIT_MSG);
+        //                 $uibModalInstance.close(answer.data);
+        //             },
+        //             function (error) {
+        //                 $log.info(error.status);
+        //                 console.log('error aayo')
+        //             }
+        //         );
+        // }
 
         function deleteRestaurant() {
             RestaurantService.deleteRestaurant(Restaurant)
