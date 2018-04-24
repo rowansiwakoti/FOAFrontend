@@ -23,6 +23,7 @@
         vm.closeModal = closeModal;
         vm.userLogout = userLogout;
         vm.orderList = orderList;
+        vm.favouriteList = favouriteList;
 
         function orderList() {
             $uibModalInstance.close();
@@ -33,10 +34,16 @@
             $uibModalInstance.close();
         }
 
+        function favouriteList(){
+            $uibModalInstance.close();
+            $state.go('FavouriteList');
+        }
+
         function userLogout() {
             vm.closeModal();
             vm.message = "";
             var modalInstance = $uibModal.open({
+                // windowClass: "modal fade in",
                 animation: true,
                 ariaLabelledBy: 'modal-title',
                 ariaDescribedBy: 'modal-body',

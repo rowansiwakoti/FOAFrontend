@@ -1,0 +1,5 @@
+<h4 style="text-align: center;">My Favourite Restaurants</h4>
+<h3 style="text-align: center;" ng-show="favCtrl.showRestaurants">Loading...</h3>
+<ul class="list-group col-sm-6" style="text-align: center;" ng-repeat="restaurant in favCtrl.restaurants">
+    <li ng-click="favCtrl.gotoRestaurant(restaurant)" class="list-group-item pointer-cursor fav-list">{{restaurant.name}} | {{restaurant.contact}} | {{restaurant.address}}</li>
+</ul>

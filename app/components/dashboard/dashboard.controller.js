@@ -11,10 +11,11 @@
         '$log',
         'APP_CONSTANT',
         'RestaurantService',
+        'FavouriteRestaurantService',
         '$rootScope'
     ];
 
-    function DashboardController($state, $uibModal, $sessionStorage, $log, APP_CONSTANT, RestaurantService, $rootScope) {
+    function DashboardController($state, $uibModal, $sessionStorage, $log, APP_CONSTANT, RestaurantService, FavouriteRestaurantService, $rootScope) {
 
         var vm = this;
 
@@ -25,6 +26,8 @@
         vm.role = $sessionStorage.role;
         vm.totalRestaurants = 0;
 
+
+        //functions
         vm.userLogout = userLogout;
         vm.addRestaurant = addRestaurant;
         vm.deleteRestaurant = deleteRestaurant;
@@ -33,6 +36,7 @@
         vm.getRestaurants = getRestaurants;
         vm.getAllUsers = getAllUsers;
         vm.gotoRestaurant = gotoRestaurant;
+        vm.addToFavourite = addToFavourite;
 
 
         vm.$onInit = function () {
@@ -207,6 +211,25 @@
             $state.go('restaurant', {
                 restaurant: restaurant
             });
+        }
+
+        function addToFavourite(restId){
+            let userId = $sessionStorage.userId;
+            FavouriteRestaurantService.addToFavourite(userId, restId)
+                .then(function(success){
+                  if((success.data.message).includes('added')){
+                      console.log('added to favorite list')
+                      vm.fav = 1;
+                  }
+                  else{
+                      vm.fav = 0;
+                      console.log('removed from favorite list');
+                  }
+                })
+                .catch(function(error){
+
+                });
+
         }
     }
 

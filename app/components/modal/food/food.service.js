@@ -26,7 +26,7 @@
         };
 
         function getFoodList(id, pageNum) {
-            return ($http.get(appUrl + '/restaurants/' + id + '/foods/' + pageNum + '/10'));
+            return ($http.get(appUrl + '/restaurants/' + id + '/foods/' + pageNum + '/10', {cache:true}));
         }
 
         function deleteFood(food) {

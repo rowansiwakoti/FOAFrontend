@@ -17,21 +17,23 @@
 })();
 
 //Components
-(function(){
+(function () {
     'use strict';
 
-    angular.module('FoodOrderingApp.Components',[
-            'FoodOrderingApp.Components.Login',
-            // 'FoodOrderingApp.Components.Dashboard',
-            'FoodOrderingApp.Components.Compare',
+    angular.module('FoodOrderingApp.Components', [
+        'FoodOrderingApp.Components.Login',
+        // 'FoodOrderingApp.Components.Dashboard',
+        'FoodOrderingApp.Components.Compare',
+        'FoodOrderingApp.Components.Favourite',
     ]);
 })();
 
 //Services
-(function(){
+(function () {
     'use strict';
 
-    angular.module('FoodOrderingApp.Services',[
+    angular.module('FoodOrderingApp.Services', [
         'FoodOrderingApp.Services.FoodCompare',
+        'FoodOrderingApp.Services.FavouriteRestaurant'
     ]);
 })();
