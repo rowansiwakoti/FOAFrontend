@@ -1,4 +1,4 @@
-(function () {
+(() => {
     'use strict';
     angular.module('FoodOrderingApp')
         .controller('FoodController', FoodController);
@@ -37,7 +37,7 @@
         var singleFood = food; // single food for adding or deleting
 
 
-        vm.$onInit = function () {
+        vm.$onInit = () => {
             if (singleFood) {
                 vm.food = angular.copy(singleFood);
                 vm.copyFood = angular.copy(singleFood);
@@ -52,10 +52,10 @@
 
         function addFoodConfirm() {
             FoodService.addFoods(foodList).then(
-                function (answer) {
-                    $uibModalInstance.close(answer.data);
+                (success) => {
+                    $uibModalInstance.close(success.data);
                 },
-                function (error) {
+                (error) => {
                     $log.error('Error occurred while adding foods to a restaurant ', error.status);
                 }
             );

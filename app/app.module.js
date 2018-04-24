@@ -1,5 +1,5 @@
 // created by rowan siwakoti
-(function () {
+(() => {
     'use strict';
 
     angular.module('FoodOrderingApp', [
@@ -17,7 +17,7 @@
 })();
 
 //Components
-(function () {
+(() => {
     'use strict';
 
     angular.module('FoodOrderingApp.Components', [
@@ -29,7 +29,7 @@
 })();
 
 //Services
-(function () {
+(() => {
     'use strict';
 
     angular.module('FoodOrderingApp.Services', [

@@ -1,5 +1,5 @@
-(function(){
+(() => {
     'use strict';
-    angular.module('FoodOrderingApp.Components.Favourite',[]);
+    angular.module('FoodOrderingApp.Components.Favourite', []);
 
 })();

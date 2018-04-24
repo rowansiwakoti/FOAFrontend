@@ -1,4 +1,4 @@
-(function () {
+(() => {
     'use strict';
 
     angular.module('FoodOrderingApp')
@@ -56,11 +56,11 @@
             if (user.userPassword === user.confirmPassword) {
                 UserService.setUser(user)
                     .then(
-                        function (answer) {
+                        (success) => {
                             $state.go('registrationSuccess');
-                            $sessionStorage.checkEmail = answer.data.email;
+                            $sessionStorage.checkEmail = success.data.email;
                         },
-                        function (error) {
+                        (error) => {
                             vm.dataLoading = false;
                             vm.registerError = APP_CONSTANT.USER_ALREADY_EXIST;
                         }

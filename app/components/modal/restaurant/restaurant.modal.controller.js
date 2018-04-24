@@ -1,4 +1,4 @@
-(function () {
+(() => {
     'use strict';
     angular.module('FoodOrderingApp')
         .controller('RestaurantModalController', RestaurantModalController);
@@ -35,7 +35,7 @@
         vm.closeModal = closeModal;
 
 
-        vm.$onInit = function () {
+        vm.$onInit = () => {
             if (Restaurant) {
                 vm.restaurant = angular.copy(Restaurant);
                 vm.copyRestaurant = angular.copy(Restaurant);
@@ -52,11 +52,11 @@
 
             RestaurantService.addRestaurant(formDataRestaurant)
                 .then(
-                    function (answer) {
+                    (success) => {
                         RestaurantService.setAlertMessage(restaurant.name + ' ' + APP_CONSTANT.ADD_MSG);
-                        $uibModalInstance.close(answer.data);
+                        $uibModalInstance.close(success.data);
                     },
-                    function (error) {
+                    (error) => {
                         $log.error('Error occurred while adding the restaurant ', error.status);
                     }
                 );
@@ -65,11 +65,11 @@
         function editRestaurant(restaurant) {
             RestaurantService.editRestaurant(restaurant)
                 .then(
-                    function (answer) {
+                    (success) => {
                         RestaurantService.setAlertMessage(restaurant.name + ' ' + APP_CONSTANT.EDIT_MSG);
-                        $uibModalInstance.close(answer.data);
+                        $uibModalInstance.close(success.data);
                     },
-                    function (error) {
+                    (error) => {
                         $log.error('Error occurred while editing the restaurant ', error.status);
                     }
                 );
@@ -78,11 +78,11 @@
         function deleteRestaurant() {
             RestaurantService.deleteRestaurant(Restaurant)
                 .then(
-                    function (answer) {
+                    (success) => {
                         RestaurantService.setAlertMessage(Restaurant.name + ' ' + APP_CONSTANT.DELETE_MSG);
-                        $uibModalInstance.close(answer.data);
+                        $uibModalInstance.close(success.data);
                     },
-                    function (error) {
+                    (error) => {
                         $log.error('Error occurred while deleting the restaurant ', error.status);
                     }
                 );

@@ -1,4 +1,4 @@
-(function () {
+(() => {
     'use strict';
     angular.module('FoodOrderingApp')
         .controller('LogoutController', LogoutController);

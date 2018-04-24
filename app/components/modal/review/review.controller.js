@@ -36,15 +36,14 @@ function ReviewController($uibModalInstance, $sessionStorage, ReviewService, Res
             rating: rating
         };
         ReviewService.addReview(userId, restId, review)
-            .then(function (success) {
+            .then((success) => {
                console.log(success.data.message);
 
             })
-            .catch(function (error) {
+            .catch((error) => {
                console.log(error.status);
             });
         $uibModalInstance.close();
-
     }
 
     function cancelModal() {

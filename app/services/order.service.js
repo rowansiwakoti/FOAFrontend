@@ -1,4 +1,4 @@
-(function () {
+(() => {
     'use strict';
     angular.module('FoodOrderingApp')
         .factory('OrderService', OrderService);
@@ -41,7 +41,7 @@
             var flag = 1;
             // set flag to zero // ignores duplicate order
             if ($sessionStorage.orderList) {
-                angular.forEach($sessionStorage.orderList, function (item) {
+                angular.forEach($sessionStorage.orderList, (item) => {
                     if (item.id === order.id) {
                         flag = 0;
                         item.quantity = order.quantity;

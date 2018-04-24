@@ -1,4 +1,4 @@
-(function () {
+(() => {
     'use strict';
 
     angular.module('FoodOrderingApp')
@@ -39,7 +39,7 @@
         vm.addToFavourite = addToFavourite;
 
 
-        vm.$onInit = function () {
+        vm.$onInit = () => {
             if (angular.isUndefined($sessionStorage.emailId) || $sessionStorage.emailId === '') {
                 $state.go('login');
             }
@@ -62,16 +62,16 @@
 
             $sessionStorage.currentPage = vm.currentPage;
 
-            RestaurantService.getRestaurantList(vm.currentPage - 1).then(
-                function (answer) {
-                    vm.currentPage = $sessionStorage.currentPage;
-                    vm.restaurants = answer.data.responseData;
-                    vm.totalRestaurants = answer.data.pageModel.count;
-                },
-                function (error) {
-                    $log.error('Error occurred while fetching restaurants!', error.status);
-                }
-            );
+            RestaurantService.getRestaurantList(vm.currentPage - 1)
+                .then((success) => {  // but () is not required if there is only one parameter
+                        vm.currentPage = $sessionStorage.currentPage;
+                        vm.restaurants = success.data.responseData;
+                        vm.totalRestaurants = success.data.pageModel.count;
+                    },
+                    (error) => {
+                        $log.error('Error occurred while fetching restaurants!', error.status);
+                    }
+                );
         }
 
         function userLogout() {
@@ -85,11 +85,12 @@
                 controllerAs: 'logoutCtrl',
                 size: 'sm'
             });
-            modalInstance.result.then(function () {
-                vm.message = RestaurantService.getAlertMessage();
-            }, function () {
-                $log.warn('User Logout modal dismissed on ' + new Date());
-            });
+            modalInstance.result
+                .then(() => {
+                    vm.message = RestaurantService.getAlertMessage();
+                }, () => {
+                    $log.warn('User Logout modal dismissed on ' + new Date());
+                });
         }
 
         function addRestaurant() {
@@ -102,15 +103,13 @@
                 controller: 'RestaurantModalController',
                 controllerAs: 'restaurantModalCtrl',
                 resolve: {
-                    Restaurant: function () {
-                        return null;
-                    }
+                    Restaurant: () => null // equivalent to: => { return expression; }
                 }
             });
-            modalInstance.result.then(function (restaurant) {
+            modalInstance.result.then((restaurant) => {
                 vm.message = RestaurantService.getAlertMessage();
                 add(restaurant);
-            }, function () {
+            }, () => {
                 $log.warn('Add restaurant modal dismissed on ' + new Date());
             });
         }
@@ -136,23 +135,21 @@
                 controllerAs: 'restaurantModalCtrl',
                 size: 'sm',
                 resolve: {
-                    Restaurant: function () {
-                        return restaurant;
-                    }
+                    Restaurant: () => restaurant // equivalent to: => { return expression; }
                 }
             });
 
-            modalInstance.result.then(function () {
+            modalInstance.result.then(() => {
                 vm.message = RestaurantService.getAlertMessage();
                 deleteRest(restaurant);
-            }, function () {
+            }, () => {
                 $log.warn('Delete restaurant modal dismissed on ' + new Date());
             });
         }
 
         function deleteRest(restaurant) {
             var pos;
-            angular.forEach(vm.restaurants, function (rest, index) {
+            angular.forEach(vm.restaurants, (rest, index) => {
                 if (rest.id === restaurant.id) {
                     pos = index;
                 }
@@ -175,23 +172,21 @@
                 controller: 'RestaurantModalController',
                 controllerAs: 'restaurantModalCtrl',
                 resolve: {
-                    Restaurant: function () {
-                        return restaurant;
-                    }
+                    Restaurant: () => restaurant // equivalent to: => { return expression; }
                 }
             });
 
-            modalInstance.result.then(function (restaurant) {
+            modalInstance.result.then((restaurant) => {
                 vm.message = RestaurantService.getAlertMessage();
                 edit(restaurant);
-            }, function () {
+            }, () => {
                 $log.warn('Edit restaurant modal dismissed on ' + new Date());
             });
         }
 
         function edit(restaurant) {
             var pos;
-            angular.forEach(vm.restaurants, function (rest, index) {
+            angular.forEach(vm.restaurants, (rest, index) => {
                 if (rest.id === restaurant.id) {
                     pos = index;
                 }
@@ -213,20 +208,20 @@
             });
         }
 
-        function addToFavourite(restId){
+        function addToFavourite(restId) {
             let userId = $sessionStorage.userId;
             FavouriteRestaurantService.addToFavourite(userId, restId)
-                .then(function(success){
-                  if((success.data.message).includes('added')){
-                      console.log('added to favorite list')
-                      vm.fav = 1;
-                  }
-                  else{
-                      vm.fav = 0;
-                      console.log('removed from favorite list');
-                  }
+                .then((success) => {
+                    if ((success.data.message).includes('added')) {
+                        console.log('added to favorite list')
+                        vm.fav = 1;
+                    }
+                    else {
+                        vm.fav = 0;
+                        console.log('removed from favorite list');
+                    }
                 })
-                .catch(function(error){
+                .catch((error) => {
 
                 });
 

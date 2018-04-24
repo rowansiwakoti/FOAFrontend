@@ -1,4 +1,4 @@
-(function () {
+(() => {
     'use strict';
     angular.module('FoodOrderingApp')
         .controller('NotificationController', NotificationController);
@@ -23,14 +23,15 @@
         vm.gotoOrder = gotoOrder;
 
         var users;
-        vm.$onInit = function () {
-            UserService.getUsers().then(function (response) {
+        vm.$onInit = () => {
+            UserService.getUsers()
+                .then((success) => {
 
-                users = response.data;
+                users = success.data;
 
-                angular.forEach(vm.orderList, function (order) {
+                angular.forEach(vm.orderList, (order) => {
 
-                    angular.forEach(users, function (user) {
+                    angular.forEach(users, (user) => {
 
                         if (order.userId === user.userId) {
                             vm.name.push({firstName: user.firstName, lastName: user.lastName});
@@ -40,7 +41,7 @@
 
                 });
 
-            }, function (response) {
+            }, (error) => {
 
             });
 

@@ -1,11 +1,11 @@
-(function(){
+(() => {
         'use strict';
         angular
             .module('FoodOrderingApp.Components.Login',[]);
     }
 )();
 
-// (function(){
+// (() => {
 //         'use strict';
 //
 //         angular
@@ -25,7 +25,7 @@
 //     }
 // )();
 
-(function () {
+(() => {
 
     'use strict';
     angular.module('FoodOrderingApp.Components.Login')
@@ -54,16 +54,16 @@
             vm.dataLoading = true;
             UserService.validateUser(user)
                 .then(
-                    function (answer) {
-                        if (answer.data) {
-                            saveDataToSession(answer.data);
+                    (success) => {
+                        if (success.data) {
+                            saveDataToSession(success.data);
                             $rootScope.$broadcast('instantUpdateBalance', $sessionStorage.balance);
                             $rootScope.$broadcast('instantUpdateRole', $sessionStorage.role);
                             vm.dataLoading = false;
                             $state.go('dashboard');
                         }
                     },
-                    function (error) {
+                    (error) => {
                         vm.errorMsg = APP_CONSTANT.USERNAME_NOT_EXIST;
                         vm.dataLoading = false;
                         $log.error('Error occurred while validating user ', error.status);

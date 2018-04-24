@@ -1,7 +1,8 @@
-(function () {
+(() => {
     'use strict';
     angular
-        .module('FoodOrderingApp.Services.FavouriteRestaurant', []).factory('FavouriteRestaurantService', FavouriteRestaurantService);
+        .module('FoodOrderingApp.Services.FavouriteRestaurant', [])
+        .factory('FavouriteRestaurantService', FavouriteRestaurantService);
 
     FavouriteRestaurantService.$inject = ['$http', 'APP_CONSTANT'];
 
@@ -17,20 +18,19 @@
         }
 
         function addToFavourite(userId, restId) {
-            // http://localhost:8080/api/users/5/favorites/14
             return $http.post(appUrl + '/api/users/' + userId + '/favorites/' + restId);
         }
 
-        function updateFavourite(userId, restId){
+        function updateFavourite(userId, restId) {
             return $http.put(appUrl + '/api/users/' + userId + '/favorites/' + restId);
         }
 
 
-        function removeFavourite(userId, restId){
+        function removeFavourite(userId, restId) {
 
         }
 
-        function getFavourites(userId){
+        function getFavourites(userId) {
             return $http.get(appUrl + '/api/users/' + userId + '/favorites');
         }
 

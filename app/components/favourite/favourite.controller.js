@@ -1,4 +1,4 @@
-(function () {
+(() => {
     'use strict';
 
     angular.module('FoodOrderingApp.Components.Favourite').controller('FavouriteController', FavouriteController);
@@ -17,16 +17,16 @@
         //functions
         vm.gotoRestaurant = gotoRestaurant;
 
-        vm.$onInit = function () {
+        vm.$onInit = () => {
             FavouriteRestaurantService.getFavourites(userId)
-                .then(function (success) {
+                .then((success) => {
                     vm.showRestaurants = true;
-                    $timeout(function () {
+                    $timeout(() => {
                         vm.restaurants = success.data;
                         vm.showRestaurants = false;
                     }, 1200);
                 })
-                .catch(function (error) {
+                .catch((error) => {
                     vm.showRestaurants = false;
                 });
         }

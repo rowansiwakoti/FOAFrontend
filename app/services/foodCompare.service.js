@@ -1,11 +1,11 @@
-(function(){
+(() => {
         'use strict';
         angular
             .module('FoodOrderingApp.Services.FoodCompare',[]);
     }
 )();
 
-(function(){
+(() => {
     'use strict';
 
     angular.module('FoodOrderingApp.Services.FoodCompare')
@@ -44,7 +44,7 @@
 
         function removeCompareItem(foodId){
             var foods = $localStorage.foodsForCompare;
-            angular.forEach(foods, function(eachFood,index){
+            angular.forEach(foods, (eachFood,index) => {
                 if(eachFood.id === foodId)
                     foods.splice(index,1);
             })

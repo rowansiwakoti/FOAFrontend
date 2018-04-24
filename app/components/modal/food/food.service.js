@@ -1,4 +1,4 @@
-(function () {
+(() => {
     'use strict';
     angular.module('FoodOrderingApp')
         .factory('FoodService', FoodService);
@@ -47,7 +47,7 @@
 
         function addFoods(foods) {
             var foodList = [];
-            angular.forEach(foods, function(food){
+            angular.forEach(foods, (food) => {
                 foodList.push({
                     name: food.name,
                     price: food.price,
@@ -78,7 +78,7 @@
             var addFoods = $sessionStorage.addFoods;
             var tempFoods = [];
             if (addFoods) {
-                addFoods.forEach(function (food) {
+                addFoods.forEach((food) => {
                     if (food.restaurantId !== id) {
                         tempFoods.push(food);
                     }

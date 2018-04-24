@@ -1,4 +1,4 @@
-(function () {
+(() => {
     'use strict';
     angular.module('FoodOrderingApp')
         .controller('RestaurantController', RestaurantController);
@@ -31,7 +31,7 @@
 
         var userId = $sessionStorage.userId;
 
-        $scope.$on("infoMsg", function (data) {
+        $scope.$on("infoMsg", (data) => {
             vm.infoMsg = RestaurantService.getAlertMessage();
         });
 
@@ -67,7 +67,7 @@
                 vm.addFoods = [];
             }
 
-            $scope.$on('updateFoodList', function (event, data) {
+            $scope.$on('updateFoodList', (event, data) => {
                 vm.foods = data;
             });
 
@@ -102,14 +102,14 @@
             if (vm.restaurant) {
                 FoodService.getFoodList(vm.restaurant.id, vm.currentPage - 1)
                     .then(
-                        function (answer) {
-                            vm.foods = answer.data.responseData;
-                            vm.totalFoods = answer.data.pageModel.count;
-                            // $timeout(function () {
+                        (success) => {
+                            vm.foods = success.data.responseData;
+                            vm.totalFoods = success.data.pageModel.count;
+                            // $timeout(() => {
                             vm.showFoods = true;
                             // }, 1000);
                         },
-                        function (error) {
+                        (error) => {
                             vm.showFoods = true;
                             $log.error('Error occurred while fetching foods from the restaurant ', error.status);
                         }
@@ -128,16 +128,12 @@
                 controller: 'FoodController',
                 controllerAs: 'foodCtrl',
                 resolve: {
-                    food: function () {
-                        return null;
-                    },
-                    foods: function () {
-                        return vm.addFoods;
-                    }
+                    food: () => null // equivalent to: => { return expression; }
+                    ,
+                    foods: () => vm.addFoods // equivalent to: => { return expression; }
                 }
-
             });
-            modalInstance.result.then(function (food) {
+            modalInstance.result.then((food) => {
 
                 food.restaurantId = vm.restaurant.id;
                 food.restaurantName = vm.restaurant.name;
@@ -145,7 +141,7 @@
                 $sessionStorage.addFoods = vm.addFoods;
                 $log.info('Add food modal closed on ' + new Date());
 
-            }, function () {
+            }, () => {
                 $log.warn('Add food modal dismissed on ' + new Date());
             });
         }
@@ -162,25 +158,22 @@
                 controller: 'FoodController',
                 controllerAs: 'foodCtrl',
                 resolve: {
-                    food: function () {
-                        return food;
-                    },
-                    foods: function () {
-                        return null;
-                    }
+                    food: () => food // equivalent to: => { return expression; }
+                    ,
+                    foods: () => null // equivalent to: => { return expression; }
                 }
             });
-            modalInstance.result.then(function (food) {
+            modalInstance.result.then((food) => {
                 edit(food);
                 vm.message = FoodService.getAlertMessage();
-            }, function () {
+            }, () => {
                 $log.warn('Edit food modal dismissed on ' + new Date());
             });
         }
 
         function edit(food) {
             var pos;
-            angular.forEach(vm.foods, function (item, index) {
+            angular.forEach(vm.foods, (item, index) => {
                 if (item.id === food.id) {
                     pos = index;
                 }
@@ -200,25 +193,22 @@
                 controllerAs: 'foodCtrl',
                 size: 'sm',
                 resolve: {
-                    food: function () {
-                        return food;
-                    },
-                    foods: function () {
-                        return null;
-                    }
+                    food: () => food // equivalent to: => { return expression; }
+                    ,
+                    foods: () => null // equivalent to: => { return expression; }
                 }
             });
-            modalInstance.result.then(function (food) {
+            modalInstance.result.then((food) => {
                 deleteFood(food);
                 $log.info('Delete food modal closed on ' + new Date());
                 vm.message = FoodService.getAlertMessage();
-            }, function () {
+            }, () => {
                 $log.warn('Delete food modal dismissed on ' + new Date());
             });
 
             function deleteFood(food) {
                 var pos;
-                angular.forEach(vm.foods, function (item, index) {
+                angular.forEach(vm.foods, (item, index) => {
                     if (item.id === food.id) {
                         pos = index;
                     }
@@ -247,12 +237,9 @@
                 controller: 'CartController as cartCtrl',
                 size: 'md',
                 resolve: {
-                    order: function () {
-                        return order;
-                    },
-                    previousOrders: function () {
-                        return previousOrders;
-                    }
+                    order: () => order // equivalent to: => { return expression; }
+                    ,
+                    previousOrders: () => previousOrders // equivalent to: => { return expression; }
                 }
             });
             modalInstance.result.then(angular.noop, angular.noop);
@@ -269,18 +256,20 @@
 
         function restaurantStatus(id, status) {
             if (status) {
-                RestaurantService.activateRestaurant(id).then(function (success) {
-                    $log.info(success.data);
-                }, function (error) {
-                    $log.error('Error occurred while activating the restaurant ', error.status);
-                });
+                RestaurantService.activateRestaurant(id)
+                    .then((success) => {
+                        $log.info(success.data);
+                    }, (error) => {
+                        $log.error('Error occurred while activating the restaurant ', error.status);
+                    });
             }
             else {
-                RestaurantService.deactivateRestaurant(id).then(function (success) {
-                    $log.info(success.data);
-                }, function (error) {
-                    $log.error('Error occurred while deactivating the restaurant ', error.status);
-                });
+                RestaurantService.deactivateRestaurant(id)
+                    .then((success) => {
+                        $log.info(success.data);
+                    }, (error) => {
+                        $log.error('Error occurred while deactivating the restaurant ', error.status);
+                    });
             }
             if (angular.isDefined($sessionStorage.restaurant)) {
                 $sessionStorage.restaurant.active = status;
@@ -289,7 +278,7 @@
 
         function deleteFoodToAdd(food) {
             var pos;
-            angular.forEach(vm.addFoods, function (item, index) {
+            angular.forEach(vm.addFoods, (item, index) => {
                 if (item.name === food.name && item.restaurantId === food.restaurantId) {
                     pos = index;
                 }
@@ -308,17 +297,14 @@
                 controller: 'FoodController  as foodCtrl',
                 size: 'sm',
                 resolve: {
-                    foods: function () {
-                        return vm.addFoods;
-                    },
-                    food: function () {
-                        return null;
-                    }
+                    foods: () => vm.addFoods // equivalent to: => { return expression; }
+                    ,
+                    food: () => null // equivalent to: => { return expression; }
                 }
             });
             modalInstance.result.then(
-                function (foods) {
-                    angular.forEach(foods, function (food) {
+                (foods) => {
+                    angular.forEach(foods, (food) => {
                         if (vm.restaurant.id === food.restaurantId) {
                             if (vm.foods.length < 10) {
                                 vm.foods.push(food);
@@ -329,7 +315,7 @@
                     $sessionStorage.addFoods = vm.addFoods;
                     $log.info('Confirm add modal closed on ' + new Date());
                 },
-                function () {
+                () => {
                     $log.warn('Confirm add modal dismissed on ' + new Date());
                 }
             );
@@ -353,7 +339,7 @@
         function ifDisabled(food) {
             var flag = false;
             var comparedFoods = CompareFoodService.getCompareList();
-            angular.forEach(comparedFoods, function (eachItem) {
+            angular.forEach(comparedFoods, (eachItem) => {
                 if (eachItem.id === food.id) {
                     flag = true;
                 }
@@ -370,9 +356,7 @@
                 controller: 'ReviewController as reviewCtrl',
                 size: 'md',
                 resolve: {
-                    RestaurantId: function () {
-                        return vm.restaurant.id;
-                    }
+                    RestaurantId: () => vm.restaurant.id // equivalent to: => { return expression; }
                 }
             });
             modalInstance.result.then(angular.noop, angular.noop);

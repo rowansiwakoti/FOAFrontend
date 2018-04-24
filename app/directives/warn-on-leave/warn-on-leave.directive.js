@@ -1,4 +1,4 @@
-(function () {
+(() => {
     'use strict';
 
     angular.module('FoodOrderingApp')
@@ -13,10 +13,10 @@
 
             restrict: 'EA',
 
-            link: function (scope, elem, attrs, form) {
+            link: (scope, elem, attrs, form) => {
 
                 if (form !== null) {
-                    var $locationChangeStartUnbind = scope.$on('$stateChangeStart', function (event, toState, toParams, fromState, fromParams) {
+                    var $locationChangeStartUnbind = scope.$on('$stateChangeStart', (event, toState, toParams, fromState, fromParams) => {
 
                         if (form.$dirty && !form.$submitted) {
 
@@ -29,16 +29,16 @@
                                 size: 'sm'
                             });
 
-                            modalInstance.result.then(function () {
+                            modalInstance.result.then(() => {
                                 form.$setPristine();
                                 $state.go(toState);
-                            }, function () {
+                            }, () => {
                                 event.preventDefault();
                             });
                         }
                     });
 
-                    scope.$on('$destroy', function () {
+                    scope.$on('$destroy', () => {
                         $window.onbeforeonload = null;
                         $locationChangeStartUnbind();
                     });

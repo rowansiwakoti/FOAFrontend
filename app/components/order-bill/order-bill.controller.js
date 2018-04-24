@@ -1,4 +1,4 @@
-(function () {
+(() => {
     'use strict';
     angular.module('FoodOrderingApp')
         .controller('OrderBillController', OrderBillController);
@@ -22,7 +22,7 @@
 
         vm.printBillReceipt = printBillReceipt;
 
-        vm.$onInit = function () {
+        vm.$onInit = () => {
             if (angular.isUndefined($sessionStorage.emailId) || $sessionStorage.emailId === '') {
                 $state.go('login');
             }
@@ -34,12 +34,12 @@
                 vm.items = $sessionStorage.userOrders;
             }
             if (vm.items) {
-                angular.forEach(vm.items, function (item) {
+                angular.forEach(vm.items, (item) => {
                     vm.total += item.foodPrice * item.quantity;
                 });
             }
 
-        }();
+        }
 
         function printBillReceipt(printSectionId) {
             var innerContents = document.getElementById(printSectionId).innerHTML;

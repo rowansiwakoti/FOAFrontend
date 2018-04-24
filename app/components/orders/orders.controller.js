@@ -1,4 +1,4 @@
-(function () {
+(() => {
         'use strict';
 
         angular.module('FoodOrderingApp.Orders')
@@ -13,7 +13,7 @@
             vm.todaysOrder = todaysOrder;
 
 
-            vm.$onInit = function () {
+            vm.$onInit = () => {
                 if ($location.path() === '/orders/month') {
                     vm.month = true;
                 }

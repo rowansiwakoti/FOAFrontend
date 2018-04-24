@@ -1,4 +1,4 @@
-(function () {
+(() => {
     'use strict';
 
     angular.module('FoodOrderingApp.Orders')
@@ -17,18 +17,18 @@
         vm.generateBill = generateBill;
         vm.checkConfirm = checkConfirm;
 
-        vm.$onInit = function () {
+        vm.$onInit = () => {
             OrderService.getOrderList()
                 .then(
-                    function (response) {
-                        if (response.data) {
-                            vm.orders = response.data;
-                            angular.forEach(vm.orders, function (order) {
+                    (success) => {
+                        if (success.data) {
+                            vm.orders = success.data;
+                            angular.forEach(vm.orders, (order) => {
                                 order.total = _add(order.foodResRequestDtoList);
                             });
                         }
                     },
-                    function (error) {
+                    (error) => {
                     }
                 );
         };
@@ -36,7 +36,7 @@
         function _add(orders) {
             var total = 0;
             if (orders) {
-                angular.forEach(orders, function (order) {
+                angular.forEach(orders, (order) => {
                     total += order.foodPrice * order.quantity;
                 });
                 return total;
@@ -44,8 +44,8 @@
         }
 
         function checkConfirm(orders) {
-            return new Promise(function (resolve, reject) {
-                resolve(orders.filter(function (order) {
+            return new Promise((resolve, reject) => {
+                resolve(orders.filter((order) => {
                     if (order.confirm === false) {
                         return order;
                     }
@@ -54,8 +54,8 @@
         }
 
         function accept(orderId) {
-            return new Promise(function (resolve, reject) {
-                angular.forEach(vm.orders, function (order, index) {
+            return new Promise((resolve, reject) => {
+                angular.forEach(vm.orders, (order, index) => {
                     if (order.orderId === orderId) {
                         order.confirm = true;
                         resolve(true);
@@ -65,17 +65,18 @@
         }
 
         function acceptOrder(orderId) {
-            OrderService.receiveOrder(orderId).then(function (response) {
+            OrderService.receiveOrder(orderId)
+                .then((success) => {
                 if (vm.orders.length > 0) {
                     var callAccept = accept(orderId);
-                    callAccept.then(function (data) {
+                    callAccept.then((data) => {
                         var call = checkConfirm(vm.orders);
-                        call.then(function (data) {
+                        call.then((data) => {
                             $rootScope.$broadcast('updateOrder', data);
                         });
                     });
                 }
-            }, function (error) {
+            }, (error) => {
             });
         }
 

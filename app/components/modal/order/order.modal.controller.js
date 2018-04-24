@@ -1,4 +1,4 @@
-(function () {
+(() => {
     'use strict';
     angular.module('FoodOrderingApp')
         .controller('OrderModalController', OrderModalController);
@@ -47,7 +47,7 @@
         function getTotal() {
             var total = 0;
             if (vm.order) {
-                angular.forEach(vm.order, function (order) {
+                angular.forEach(vm.order, (order) => {
                     total += order.price * order.quantity;
                 });
             }
@@ -67,7 +67,7 @@
                 size: 'sm'
             });
             modalInstance.result.then(
-                function () {
+                () => {
                     $rootScope.$broadcast("infoMsg", RestaurantService.setAlertMessage(APP_CONSTANT.ORDER_INFO_MSG));
                 },
                 angular.noop);
@@ -89,7 +89,7 @@
             var totalAmount = 0;
             var id = $sessionStorage.userId;
 
-            angular.forEach(vm.order, function (order) {
+            angular.forEach(vm.order, (order) => {
                 totalAmount += (order.quantity * order.price);
                 orderedItems.push({
                     foodName: order.name,

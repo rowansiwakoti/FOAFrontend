@@ -1,4 +1,4 @@
-(function () {
+(() => {
     'use strict';
 
     angular.module('FoodOrderingApp')
@@ -43,7 +43,6 @@
             vm.closeModal();
             vm.message = "";
             var modalInstance = $uibModal.open({
-                // windowClass: "modal fade in",
                 animation: true,
                 ariaLabelledBy: 'modal-title',
                 ariaDescribedBy: 'modal-body',
@@ -53,9 +52,9 @@
                 controllerAs: 'logoutCtrl',
                 size: 'sm'
             });
-            modalInstance.result.then(function () {
+            modalInstance.result.then(() => {
                 vm.message = RestaurantService.getAlertMessage();
-            }, function () {
+            }, () => {
                 $log.warn('User Logout modal dismissed on ' + new Date());
             });
         }

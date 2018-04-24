@@ -1,4 +1,4 @@
-(function () {
+(() => {
     'use strict';
     angular.module('FoodOrderingApp')
         .controller('CartController', CartController);
@@ -24,11 +24,11 @@
         vm.removeOrder = removeOrder;
 
 
-        vm.$onInit = function () {
+        vm.$onInit = () => {
             //for updating the food quantity if we want to update the food quantity that has already been into the cart.
             if (previousOrders) {
                 if (order) {
-                    angular.forEach(previousOrders, function (eachOrder) {
+                    angular.forEach(previousOrders, (eachOrder) => {
                         if (eachOrder.id === order.id && eachOrder.name === order.name && eachOrder.restaurantName === order.restaurantName && eachOrder.price === order.price) {
                             vm.quantity = eachOrder.quantity;
                             vm.eachOrderQuantity = eachOrder.quantity;

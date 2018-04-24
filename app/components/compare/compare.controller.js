@@ -1,11 +1,11 @@
-(function(){
+(() => {
         'use strict';
         angular
             .module('FoodOrderingApp.Components.Compare',[]);
     }
 )();
 
-(function(){
+(() => {
     'use strict';
 
     angular.module('FoodOrderingApp.Components.Compare')
@@ -18,13 +18,15 @@
         vm.removeCompareItem = CompareFoodService.removeCompareItem;
         vm.clearCompareList = CompareFoodService.clearCompare;
 
-        vm.$onInit = function(){
-            $interval(function(){
+        vm.addToCart = addToCart;
+
+        vm.$onInit = () => {
+            $interval(() => {
                 vm.foodList = $localStorage.foodsForCompare;
             });
         };
 
-        vm.addToCart = function(food){
+        function addToCart(food){
             OrderService.addOrder(food);
         }
     }

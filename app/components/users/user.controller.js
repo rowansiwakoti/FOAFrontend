@@ -1,4 +1,4 @@
-(function () {
+(() => {
     'use strict';
 
     angular.module('FoodOrderingApp')
@@ -15,15 +15,16 @@
         vm.closeModal = closeModal;
         vm.editUser = editUser;
 
-        vm.$onInit = function () {
-            UserService.getUsers().then(function (success) {
-                vm.userList = success.data;
-            }, function (error) {
+        vm.$onInit = () => {
+            UserService.getUsers()
+                .then((success) => {
+                    vm.userList = success.data;
+                }, (error) => {
 
-            });
+                });
         };
 
-        function deleteUser(user){
+        function deleteUser(user) {
             var modalInstance = $uibModal.open({
                 animation: true,
                 ariaLabelledBy: 'modal-title',
@@ -33,19 +34,17 @@
                 controllerAs: 'userCtrl',
                 size: 'sm'
             });
-            modalInstance.result.then(function () {
-            }, function () {
-            });
+            modalInstance.result.then(angular.noop, angular.noop);
         }
 
-        function deleteUserConfirm(){
+        function deleteUserConfirm() {
         }
 
-        function closeModal(){
+        function closeModal() {
             // $uibModalInstance.close();
         }
 
-        function editUser(){
+        function editUser() {
             var modalInstance = $uibModal.open({
                 animation: true,
                 ariaLabelledBy: 'modal-title',
@@ -55,9 +54,7 @@
                 controllerAs: 'userCtrl',
                 size: 'md'
             });
-            modalInstance.result.then(function () {
-            }, function () {
-            });
+            modalInstance.result.then(angular.noop, angular.noop);
         }
     }
 
