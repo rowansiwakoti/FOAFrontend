@@ -9,7 +9,7 @@
 </head>
 
 <body>
-<div class="container">
+<div class="container" style="position: relative">
     <fv-header></fv-header>
     <div ui-view class="wrapper">
 
@@ -66,7 +66,13 @@
 <!--Favourite-->
 <script src="components/favourite/favourite.module.js"></script>
 <script src="components/favourite/favourite.route.js"></script>
+<script src="components/favourite/favourite.service.js"></script>
 <script src="components/favourite/favourite.controller.js"></script>
+
+<!--Review-->
+<script src="directives/star-rating/star.directive.js"></script>
+<script src="components/modal/review/review.service.js"></script>
+<script src="components/modal/review/review.controller.js"></script>
 
 <script src="services/order.service.js"></script>
 <script src="components/orders/orders.module.js"></script>

@@ -43,6 +43,7 @@
             vm.closeModal();
             vm.message = "";
             var modalInstance = $uibModal.open({
+                // windowClass: "modal fade in",
                 animation: true,
                 ariaLabelledBy: 'modal-title',
                 ariaDescribedBy: 'modal-body',
