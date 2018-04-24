@@ -54,6 +54,7 @@
         function registerUser(user) {
             vm.dataLoading = true;
             if (user.userPassword === user.confirmPassword) {
+
                 UserService.setUser(user)
                     .then(
                         function (answer) {

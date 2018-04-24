@@ -21,7 +21,6 @@
                 <p class="help-block" ng-message="minlength">{{restaurantModalCtrl.restNameTooShort}}</p>
             </div>
 
-
         </div>
         <div class="form-group">
             <label class="restaurant-name center">Restaurant address</label>
@@ -55,6 +54,7 @@
 
         <div class = "form-group">
             <label>Restaurant Image</label>
+            <input type="text" ng-model="restaurantModalCtrl.restaurant.restaurantCode">
             <input type="file" class="form-control" file-model="restaurantModalCtrl.restaurant.files">
         </div>
 

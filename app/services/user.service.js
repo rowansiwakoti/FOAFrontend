@@ -9,10 +9,11 @@
     UserService.$inject = [
         '$http',
         'APP_CONSTANT',
-        '$q'
+        '$q',
+        'ApiService'
     ];
 
-    function UserService($http, APP_CONSTANT, $q) {
+    function UserService($http, APP_CONSTANT, $q, ApiService) {
 
         var appUrl = APP_CONSTANT.FOA_APP;
 
@@ -26,15 +27,16 @@
 
         function setUser(user) {
             user.balance = 1200;
-            var req = {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                data: user,
-                url: appUrl + '/user'
-            };
-            return ($http(req));
+            return ApiService.post('/user', null, user);
+            // var req = {
+            //     method: 'POST',
+            //     headers: {
+            //         'Content-Type': 'application/json'
+            //     },
+            //     data: user,
+            //     url: appUrl + '/user'
+            // };
+            // return ($http(req));
         }
 
         function validateUser(user) {
