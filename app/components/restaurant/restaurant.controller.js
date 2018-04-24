@@ -14,10 +14,11 @@
         'RestaurantService',
         'OrderService',
         'CompareFoodService',
-        '$timeout'
+        '$timeout',
+        'ReviewService'
     ];
 
-    function RestaurantController($sessionStorage, $localStorage, $state, $stateParams, $uibModal, $log, $scope, FoodService, RestaurantService, OrderService, CompareFoodService, $timeout) {
+    function RestaurantController($sessionStorage, $localStorage, $state, $stateParams, $uibModal, $log, $scope, FoodService, RestaurantService, OrderService, CompareFoodService, $timeout, ReviewService) {
 
         var vm = this;
         vm.foodItems = [];
@@ -26,11 +27,16 @@
         vm.order = OrderService.getOrder();
         vm.message = '';
         vm.role = $sessionStorage.role;
+        vm.reviewStatus = false;
+
+        var userId = $sessionStorage.userId;
 
         $scope.$on("infoMsg", function (data) {
             vm.infoMsg = RestaurantService.getAlertMessage();
         });
 
+
+        //functions
         vm.addFood = addFood;
         vm.editFood = editFood;
         vm.deleteFood = deleteFood;
@@ -43,6 +49,7 @@
         vm.getFoods = getFoods;
         vm.compareFood = compareFood;
         vm.ifDisabled = ifDisabled;
+        vm.leaveReview = leaveReview;
 
         vm.showFoods = false;
 
@@ -71,7 +78,19 @@
             if ($sessionStorage.restaurant) {
                 vm.status = $sessionStorage.restaurant.active;
             }
+
+            ReviewService.getUserReviewForRestaurant(userId, vm.restaurant.id)
+                .then((success) => {
+                    if (success.data.restaurantName === vm.restaurant.name) {
+                        vm.reviewStatus = true;
+                        console.log(vm.reviewStatus);
+                    }
+                })
+                .catch((error) => {
+                    console.log(error.status);
+                })
         }
+
 
         //Getting Foods for the current Restaurant
         vm.currentPage = 0;
@@ -86,9 +105,9 @@
                         function (answer) {
                             vm.foods = answer.data.responseData;
                             vm.totalFoods = answer.data.pageModel.count;
-                            $timeout(function(){
-                                vm.showFoods = true;
-                            }, 1000);
+                            // $timeout(function () {
+                            vm.showFoods = true;
+                            // }, 1000);
                         },
                         function (error) {
                             vm.showFoods = true;
@@ -331,7 +350,7 @@
         /**
          * Disable the Compare Button if the food is already in compare list
          ***/
-        function ifDisabled(food){
+        function ifDisabled(food) {
             var flag = false;
             var comparedFoods = CompareFoodService.getCompareList();
             angular.forEach(comparedFoods, function (eachItem) {
@@ -342,8 +361,22 @@
             return flag;
         }
 
-
-
+        function leaveReview() {
+            var modalInstance = $uibModal.open({
+                animation: true,
+                ariaLabelledBy: 'modal-title',
+                ariaDescribedBy: 'modal-body',
+                templateUrl: 'components/modal/review/review.html',
+                controller: 'ReviewController as reviewCtrl',
+                size: 'md',
+                resolve: {
+                    RestaurantId: function () {
+                        return vm.restaurant.id;
+                    }
+                }
+            });
+            modalInstance.result.then(angular.noop, angular.noop);
+        }
     }
 
 })();

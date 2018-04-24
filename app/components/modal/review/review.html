@@ -1,0 +1,21 @@
+<div class="modal-header">
+    <div class="modal-title">
+        Leave a Review
+    </div>
+</div>
+<div class="modal-body">
+    <form name="reviewForm" class="form-group-sm">
+        <textarea class="form-control" ng-model="reviewCtrl.reviewMessage" ng-minlength="3" ng-maxlength="255" rows="5"
+                  placeholder="Write your review here..." required></textarea>
+        <div star rating="reviewCtrl.rating" max="reviewCtrl.max" on-hover="reviewCtrl.onHover"
+             on-leave="reviewCtrl.onLeave" readonly="{{reviewCtrl.readonly}}"></div>
+    </form>
+</div>
+<div class="modal-footer">
+    <button ng-disabled="reviewForm.$invalid" class="btn btn-success" ng-click="reviewCtrl.addReview(reviewCtrl.reviewMessage, reviewCtrl.rating)"><span
+            class="glyphicon glyphicon-ok"></span> Save
+    </button>
+    <button class="btn btn-danger" ng-click="reviewCtrl.cancelModal()"><span class="glyphicon glyphicon-remove"></span>
+        Cancel
+    </button>
+</div>

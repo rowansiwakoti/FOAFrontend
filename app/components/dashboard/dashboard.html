@@ -15,9 +15,10 @@
                 <h3 class="rest">{{restaurant.name}}</h3>
             </div>
         </a>
-        <div ng-show="dashboardCtrl.role==='user'" class="favorite-button">
+        <div ng-show="dashboardCtrl.role==='user'" ng-class="dashboardCtrl.fav?'red':'black;'" class="favorite-button" ng-click="dashboardCtrl.addToFavourite(restaurant.id)">
             <span class="glyphicon glyphicon-heart-empty" style="margin-top: 5px;"></span>
-        </div><br/>
+        </div>
+        <br/>
         <button class="btn btn-success btn-sm" ng-click="dashboardCtrl.editRestaurant(restaurant)"
                 ng-hide="dashboardCtrl.role==='user'">Edit Restaurant
         </button>

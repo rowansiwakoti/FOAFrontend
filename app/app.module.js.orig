@@ -20,11 +20,19 @@
 (function () {
     'use strict';
 
+<<<<<<< HEAD
     angular.module('FoodOrderingApp.Components', [
         'FoodOrderingApp.Components.Login',
         // 'FoodOrderingApp.Components.Dashboard',
         'FoodOrderingApp.Components.Compare',
         'FoodOrderingApp.Components.Favourite',
+=======
+    angular.module('FoodOrderingApp.Components',[
+            'FoodOrderingApp.Components.Login',
+            // 'FoodOrderingApp.Components.Dashboard',
+            'FoodOrderingApp.Components.Compare',
+            'FoodOrderingApp.Components.Favourite',
+>>>>>>> develop
     ]);
 })();
 
@@ -34,7 +42,10 @@
 
     angular.module('FoodOrderingApp.Services', [
         'FoodOrderingApp.Services.FoodCompare',
+<<<<<<< HEAD
         'FoodOrderingApp.Services.FavouriteRestaurant'
+=======
         'FoodOrderingApp.Services.API'
+>>>>>>> develop
     ]);
 })();

@@ -6,9 +6,7 @@
 
         <img ng-src="assets/img/user.png" alt="User Profile">
         <h4>{{userProfileCtrl.name | uppercase}} - {{userProfileCtrl.user==='admin'?'ADMIN':'USER'}}</h4>
-
     </div>
-
 </div>
 
 <div class="modal-body user-modal-body">
@@ -16,7 +14,13 @@
     <ul class="list-group">
         <li class="list-group-item pointer-cursor"  ng-click="userProfileCtrl.orderList()">
             <img src="assets/img/order.png" alt="Order List">
-            <label class="pointer-cursor">&nbsp; Orders</label>
+            <label class="pointer-cursor">&nbsp; My Orders</label>
+        </li>
+
+        <li class="list-group-item pointer-cursor" ng-click="userProfileCtrl.favouriteList()">
+            <!--<img src="assets/img/order.png" alt="Order List">-->
+            <span class="glyphicon glyphicon-heart"></span>
+            <label class="pointer-cursor">&nbsp; Favourite Restaurant</label>
         </li>
 
         <li class="list-group-item pointer-cursor" ng-click="userProfileCtrl.favouriteList()">

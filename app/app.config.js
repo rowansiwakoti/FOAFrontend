@@ -5,13 +5,15 @@
     angular.module('FoodOrderingApp')
         .config(config);
 
-
     config.$inject = [
         '$stateProvider',
         '$urlRouterProvider',
-        '$qProvider'
+        '$qProvider',
+        '$compileProvider'
     ];
-    function config($stateProvider, $urlRouterProvider, $qProvider) {
+
+    function config($stateProvider, $urlRouterProvider, $qProvider, $compileProvider) {
+        $compileProvider.debugInfoEnabled(false);
         $qProvider.errorOnUnhandledRejections(true);
         $urlRouterProvider.otherwise('/login');
         $stateProvider
@@ -71,10 +73,10 @@
                 templateUrl: 'components/orders/month/month.html',
                 controller: 'MonthController as monthsCtrl'
             })
-            .state('compareList',{
-                url:'/compare',
-                templateUrl:'components/compare/compare.html',
-                controller:'CompareController as compareCtrl'
+            .state('compareList', {
+                url: '/compare',
+                templateUrl: 'components/compare/compare.html',
+                controller: 'CompareController as compareCtrl'
             })
         ;
         // $locationProvider.html5Mode(true);

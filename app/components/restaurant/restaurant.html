@@ -8,124 +8,132 @@
     <h3>Loading...</h3>
 </div>
 <div ng-show="restaurantCtrl.showFoods">
-<div>
-    <a ui-sref="dashboard" class="btn btn-default btn-sm">Go Back</a>
-    <h3 class="page"><u>{{restaurantCtrl.restaurant.name}} | {{restaurantCtrl.restaurant.address}} |
-        {{restaurantCtrl.restaurant.contact}}</u></h3>
-</div><br/>
-<div ng-show="restaurantCtrl.role ==='admin'">
-    <a class="btn btn-default btn-sm button-name" ng-click="restaurantCtrl.addFood()"
-       ng-show="restaurantCtrl.role === 'admin'">Add Food</a>
-    <div class="switch pull-right">
-        <input id="cmn-toggle-4" class="cmn-toggle cmn-toggle-round-flat" type="checkbox"
-               ng-model="restaurantCtrl.status"
-               ng-change="restaurantCtrl.restaurantStatus(restaurantCtrl.restaurant.id, restaurantCtrl.status)">
-        <label for="cmn-toggle-4"></label>
-    </div>
-    <br/><br/>
-    <div ng-show="restaurantCtrl.role ==='admin'" class="row">
-        <div class="col-md-8">
-            <table class="table table-condensed table-hover table-striped table-bordered ">
-                <caption ng-hide="restaurantCtrl.role === 'admin'">
-                    <h3>Order</h3>
-                </caption>
-                <thead>
-                <tr>
-                    <th>S/N</th>
-                    <th>Food</th>
-                    <th>Price</th>
-                    <th>Action</th>
-                </tr>
-                </thead>
-                <tbody>
-
-                <tr ng-hide="restaurantCtrl.foods.length>=1">
-                    <td colspan="6" class="info-message"><strong>No Food Added.</strong>
-                    </td>
-                </tr>
-
-                <tr ng-repeat="food in restaurantCtrl.foods">
-                    <td>{{$index+1}}</td>
-                    <td>{{food.name}}</td>
-                    <td>{{food.price | currency:"Rs. "}}</td>
-                    <td>
-                        <a class="btn btn-default btn-sm" ng-click="restaurantCtrl.editFood(food)"><span
-                                class="glyphicon glyphicon-pencil"></span> Edit</a>
-                        <a class="btn btn-default btn-sm" ng-click="restaurantCtrl.deleteFood(food)"><span
-                                class="glyphicon glyphicon-trash"></span> Delete</a>
-                    </td>
-                </tr>
-                </tbody>
-            </table>
+    <div class="row">
+        <div class="col-md-2 back-btn">
+            <a ui-sref="dashboard" class="btn btn-default">Go Back</a>
         </div>
-        <div class="col-md-4">
-            <table class="table table-condensed table-hover table-striped table-bordered "
-                   ng-hide="restaurantCtrl.addFoods.length<=0">
-                <thead>
-                <tr>
-                    <th>Food</th>
-                    <th>Price</th>
-                    <th>Restaurant</th>
-                    <th>Delete</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr ng-repeat="food in restaurantCtrl.addFoods">
-                    <td>{{food.name}}</td>
-                    <td>{{food.price | currency:"Rs. "}}</td>
-                    <td>{{food.restaurantName}}</td>
-                    <td ng-click="restaurantCtrl.deleteFoodToAdd(food)">
-                        <a><span class="glyphicon glyphicon-remove"></span> </a>
-                    </td>
-                </tr>
-                </tbody>
-            </table>
-            <button class="btn btn-default btn-sm" ng-click="restaurantCtrl.confirmAdd()"
-                    ng-hide="restaurantCtrl.addFoods.length<=0">Confirm
-            </button>
+        <div class="col-md-8 restaurant-info">
+            <h3><u>{{restaurantCtrl.restaurant.name}} | {{restaurantCtrl.restaurant.address}} |
+                {{restaurantCtrl.restaurant.contact}}</u></h3>
+        </div>
+        <div class="col-md-2 review-btn">
+            <button class="btn btn-success" ng-click="restaurantCtrl.leaveReview()">{{restaurantCtrl.reviewStatus?'Update Review':'Leave a Review'}}</button>
         </div>
     </div>
-</div>
+    <br/>
+    <div ng-show="restaurantCtrl.role ==='admin'">
+        <a class="btn btn-default btn-sm button-name" ng-click="restaurantCtrl.addFood()"
+           ng-show="restaurantCtrl.role === 'admin'">Add Food</a>
+        <div class="switch pull-right">
+            <input id="cmn-toggle-4" class="cmn-toggle cmn-toggle-round-flat" type="checkbox"
+                   ng-model="restaurantCtrl.status"
+                   ng-change="restaurantCtrl.restaurantStatus(restaurantCtrl.restaurant.id, restaurantCtrl.status)">
+            <label for="cmn-toggle-4"></label>
+        </div>
+        <br/><br/>
+        <div ng-show="restaurantCtrl.role ==='admin'" class="row">
+            <div class="col-md-8">
+                <table class="table table-condensed table-hover table-striped table-bordered ">
+                    <caption ng-hide="restaurantCtrl.role === 'admin'">
+                        <h3>Order</h3>
+                    </caption>
+                    <thead>
+                    <tr>
+                        <th>S/N</th>
+                        <th>Food</th>
+                        <th>Price</th>
+                        <th>Action</th>
+                    </tr>
+                    </thead>
+                    <tbody>
 
-<div ng-hide="restaurantCtrl.role ==='admin'" class="row">
-    <table class="table table-condensed table-hover table-striped table-bordered">
+                    <tr ng-hide="restaurantCtrl.foods.length>=1">
+                        <td colspan="6" class="info-message"><strong>No Food Added.</strong>
+                        </td>
+                    </tr>
 
-        <thead>
-        <tr>
-            <th>S/N</th>
-            <th>Food</th>
-            <th>Price</th>
-            <th>Order</th>
-        </tr>
-        </thead>
-        <tbody>
-
-        <tr ng-hide="restaurantCtrl.foods.length>=1">
-            <td colspan="6" class="info-message"><strong>No Food Added.</strong>
-            </td>
-        </tr>
-
-        <tr ng-repeat="food in restaurantCtrl.foods">
-            <td>{{$index + 1}}</td>
-            <td>{{food.name}}</td>
-            <td>{{food.price | currency:"Rs. "}}</td>
-            <td>
-                <button ng-click="restaurantCtrl.compareFood(food)" class="btn btn-sm"
-                        ng-disabled="restaurantCtrl.ifDisabled(food)">
-                    <span class="glyphicon glyphicon-list-alt"></span> Compare
+                    <tr ng-repeat="food in restaurantCtrl.foods">
+                        <td>{{$index+1}}</td>
+                        <td>{{food.name}}</td>
+                        <td>{{food.price | currency:"Rs. "}}</td>
+                        <td>
+                            <a class="btn btn-default btn-sm" ng-click="restaurantCtrl.editFood(food)"><span
+                                    class="glyphicon glyphicon-pencil"></span> Edit</a>
+                            <a class="btn btn-default btn-sm" ng-click="restaurantCtrl.deleteFood(food)"><span
+                                    class="glyphicon glyphicon-trash"></span> Delete</a>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-md-4">
+                <table class="table table-condensed table-hover table-striped table-bordered "
+                       ng-hide="restaurantCtrl.addFoods.length<=0">
+                    <thead>
+                    <tr>
+                        <th>Food</th>
+                        <th>Price</th>
+                        <th>Restaurant</th>
+                        <th>Delete</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr ng-repeat="food in restaurantCtrl.addFoods">
+                        <td>{{food.name}}</td>
+                        <td>{{food.price | currency:"Rs. "}}</td>
+                        <td>{{food.restaurantName}}</td>
+                        <td ng-click="restaurantCtrl.deleteFoodToAdd(food)">
+                            <a><span class="glyphicon glyphicon-remove"></span> </a>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+                <button class="btn btn-default btn-sm" ng-click="restaurantCtrl.confirmAdd()"
+                        ng-hide="restaurantCtrl.addFoods.length<=0">Confirm
                 </button>
-                <button ng-click="restaurantCtrl.addOrder(food, restaurantCtrl.restaurant.name)" class="btn btn-sm">
-                    <span class="glyphicon glyphicon-plus-sign"></span> Select
-                </button>
-            </td>
-        </tr>
-        </tbody>
-    </table>
-</div>
-<ul ng-show="restaurantCtrl.totalFoods" uib-pagination total-items="restaurantCtrl.totalFoods"
-    ng-model="restaurantCtrl.currentPage"
-    max-size="5"
-    class="pagination-sm" boundary-links="true" force-ellipses="true" items-per-page="10"
-    ng-change="restaurantCtrl.getFoods()">
-</ul>
+            </div>
+        </div>
+    </div>
+
+    <div ng-hide="restaurantCtrl.role ==='admin'" class="row">
+        <table class="table table-condensed">
+
+            <thead>
+            <tr>
+                <!--<th>S/N</th>-->
+                <th>Food</th>
+                <th>Unit Price</th>
+                <th>Order</th>
+            </tr>
+            </thead>
+            <tbody>
+
+            <tr ng-hide="restaurantCtrl.foods.length>=1">
+                <td colspan="6" class="info-message"><strong>No Food Added.</strong>
+                </td>
+            </tr>
+
+            <tr ng-repeat="food in restaurantCtrl.foods" class="tb-hover">
+                <!--<td>{{$index + 1}}</td>-->
+                <td>{{food.name}}</td>
+                <td>{{food.price | currency:"Rs. "}}</td>
+                <td>
+                    <button ng-click="restaurantCtrl.compareFood(food)" class="btn btn-sm"
+                            ng-disabled="restaurantCtrl.ifDisabled(food)">
+                        <span class="glyphicon glyphicon-list-alt"></span> Compare
+                    </button>
+                    <button ng-click="restaurantCtrl.addOrder(food, restaurantCtrl.restaurant.name)" class="btn btn-sm">
+                        <span class="glyphicon glyphicon-plus-sign"></span> Select
+                    </button>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <ul ng-show="restaurantCtrl.totalFoods" uib-pagination total-items="restaurantCtrl.totalFoods"
+        ng-model="restaurantCtrl.currentPage"
+        max-size="5"
+        class="pagination-sm" boundary-links="true" force-ellipses="true" items-per-page="10"
+        ng-change="restaurantCtrl.getFoods()">
+    </ul>
 </div>
