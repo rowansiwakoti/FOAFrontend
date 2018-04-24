@@ -67,6 +67,7 @@
 <!--Favourite-->
 <script src="components/favourite/favourite.module.js"></script>
 <script src="components/favourite/favourite.route.js"></script>
+<<<<<<< HEAD
 <script src="components/favourite/favourite.service.js"></script>
 <script src="components/favourite/favourite.controller.js"></script>
 
@@ -74,6 +75,10 @@
 <script src="directives/star-rating/star.directive.js"></script>
 <script src="components/modal/review/review.service.js"></script>
 <script src="components/modal/review/review.controller.js"></script>
+=======
+<script src="components/favourite/favourite.controller.js"></script>
+
+>>>>>>> develop
 
 <script src="services/order.service.js"></script>
 <script src="components/orders/orders.module.js"></script>
